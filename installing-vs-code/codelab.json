@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-01-17T18:29:45Z",
+  "id": "installing-vs-code",
+  "duration": 0,
+  "title": "Installing VS Code on Cloud Shell",
+  "authors": "elliott",
+  "summary": "In this tutorial you'll learn how to install Visual Studio Cloud so that it will run in your Google Cloud Shell.  You can then use the Google Cloud Shell as your primary development machine.",
+  "source": "1TucUigbfMY4kwsNijg-8DNPcc34NSUDxBCiT3UkHOaE",
+  "theme": "gcp",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "GCP"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "installing-vs-code"
+}

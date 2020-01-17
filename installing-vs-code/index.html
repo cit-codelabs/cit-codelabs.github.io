@@ -1,0 +1,190 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Installing VS Code on Cloud Shell</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="installing-vs-code"
+                  title="Installing VS Code on Cloud Shell"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>In this course, you are being <strong>strongly encouraged</strong> to use the Google Cloud Platform Cloud Shell virtual machine as your development environment for your projects this semester.</p>
+<p>Installing Visual Studio Code directly on that virtual machine means that you will be able to use one of the best IDEs around on any machine you are using with zero installation and setup (after following these instructions.) </p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/4f8d5421765ff422.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded>What Technologies Are We Using?</h2>
+<ul>
+<li>Visual Studio Code is an open-source IDE by Microsoft that offers a large number of add-ons and functions that are invaluable for developers</li>
+<li>Your development environment will be the <strong>Google Cloud Shell</strong>, which is a Linux (Ubuntu) VM that has <em>most</em> (not all) of the software you&#39;ll use this semester pre-installed</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Overview of the Steps" duration="0">
+        <p>Installing Visual Studio Code is relatively easy, and you should only have to do it once.</p>
+<ol type="1" start="1">
+<li>Log into Your Google Cloud Shell</li>
+<li>Install Visual Studio Code from source</li>
+<li>Create a Bash script that lets you launch VS Code from the command line</li>
+<li>Create a Bash script that lets you quit VS Code from the command line</li>
+<li>Introduction to some helpful Linux commands when running processes in the background</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Log into Your Google Cloud Shell" duration="0">
+        <p>You can load the Google Cloud Shell two ways:</p>
+<h2 is-upgraded>Option 1:</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Log into the Google Cloud Platform (<a href="https://console.cloud.google.com" target="_blank">https://console.cloud.google.com</a>) and choose the &#34;Activate Cloud Shell&#34; icon at the top right.</p>
+<p><a href="http://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Connect to Google Cloud Platform</paper-button></a></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 299.31px" src="img/8709506d5e0606fc.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded>Option 2:</h2>
+<p>Go directly to the Cloud Shell (<a href="https://ssh.cloud.google.com" target="_blank">https://ssh.cloud.google.com</a>)</p>
+<p><a href="http://ssh.cloud.google.com" target="_blank"><paper-button class="colored" raised>Connect to Cloud Shell</paper-button></a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Install VS Code from Source" duration="0">
+        <h2 is-upgraded>Go Home</h2>
+<p>At the <strong>root level</strong> (your &#34;home&#34; directory) of your Cloud Shell, create a new directory and enter it.  </p>
+<p>Copy and paste the following code into your command line:</p>
+<pre><code>mkdir vscode &amp;&amp; cd vscode</code></pre>
+<aside class="special"><p><strong>Pro tip! </strong> You can always get to your home directory by typing <code>cd ~</code> on the command line</p>
+</aside>
+<h2 is-upgraded>Store the Current Version Number of Code Server</h2>
+<p>We are using a tool called <strong>code-server </strong>to run VS Code on our virtual machine.  We need to find the most recently released version number, which we&#39;ll store in a variable called <code>VERSION</code>.</p>
+<p>Copy and paste the following code into your command line (it&#39;s a long command, so copy all the way to the right):</p>
+<pre><code>export VERSION=`curl -s https://api.github.com/repos/cdr/code-server/releases/latest | grep -oP &#39;&#34;tag_name&#34;: &#34;\K(.*)(?=&#34;)&#39;`</code></pre>
+<h2 is-upgraded>Download Code Server</h2>
+<p>You can now download the most up-to-date version of code-server.</p>
+<p>Copy and paste the following code into your command line:</p>
+<pre><code>wget https://github.com/cdr/code-server/releases/download/$VERSION/code-server$VERSION-linux-x86_64.tar.gz</code></pre>
+<p>Extract the archive:</p>
+<pre><code>tar -xvzf code-server$VERSION-linux-x86_64.tar.gz</code></pre>
+<aside class="special"><p><strong>Nerd alert! </strong> Compressed archives with the .tar.gz extension are commonly called &#34;tarballs.&#34;</p>
+</aside>
+<p>Enter the newly-created directory and start the application:</p>
+<pre><code>cd code-server$VERSION-linux-x86_64
+./code-server --auth none --port 8080</code></pre>
+<h2 is-upgraded>Run Visual Studio Code</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>VS Code is now running as a web process on port 8080 of your virtual machine.  </p>
+<p>To see the software in the browser, choose the &#34;Web Preview&#34; icon at the top of the Cloud Shell terminal window and choose <strong>Preview on port 8080.</strong></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 253.85px" src="img/186e258ee9b04b79.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded>Quitting VS Code</h2>
+<p>To quit VS Code (so that you can use your command line again), click once in the Cloud Shell terminal and press <strong>Ctrl+C</strong></p>
+<p>(We&#39;ll make this work more smoothly in the next two steps.)</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Create a Bash Script to Start VS Code" duration="0">
+        <p>In this step and the next, you will create two Bash scripts that will start and stop Visual Studio Code.</p>
+<p>Bash scripts contain a series of instructions on the command line.  You can write Bash scripts to help you run multiple tasks that you have to execute in sequence.</p>
+<h2 is-upgraded>Go Home</h2>
+<p>Make sure you are in your home directory by typing <code>cd ~</code></p>
+<aside class="special"><p><strong>Pro tip! </strong> The default Cloud Shell prompt shows your directory path.</p>
+<p>If you are in your home directory, the prompt should show <em><code>username</code></em><code>@cloudshell:~$</code></p>
+</aside>
+<h2 is-upgraded>Create a New File</h2>
+<p>You&#39;ll create a new file where we will store our script&#39;s instructions.  This will be a <strong>hidden</strong> file at the root of your virtual machine.</p>
+<pre><code>nano .startvscode</code></pre>
+<p>This will open the <strong>nano</strong> terminal text editor.  Don&#39;t panic.  You&#39;ll only use it a tiny bit.</p>
+<p>Copy and paste the instructions into the text file.  <strong>Be sure you change line 4 to your username!</strong>  Example:</p>
+<p><code>USERNAME=elliott</code></p>
+<h3 is-upgraded><a href="https://gist.github.iu.edu/elliott/ef6bd19e07353c385af7cc746788435c" target="_blank">.startvscode</a></h3>
+<pre><code>#!/bin/bash
+# This script will launch Visual Studio Code as a background process on the Google Cloud Shell
+
+USERNAME=username # UPDATE WITH YOUR USERNAME
+VSCODEDIR=/home/$USERNAME/vscode/code-server2.1692-vsc1.39.2-linux-x86_64
+
+cd $VSCODEDIR
+./code-server --auth none --port 8080 &amp;
+
+echo &#34;***NOTE:  Press Ctrl+C to continue working in the Terminal while VS Code runs.&#34;</code></pre>
+<p>Save the file by typing <code>Ctrl+X</code> and then <code>Y</code>.</p>
+<h2 is-upgraded>Launching VS Code</h2>
+<p>You can now launch VS Code by typing the following instruction while in your home directory:</p>
+<pre><code>bash .startvscode</code></pre>
+<p>Use the Web Preview for port 8080 to see Visual Studio Code run in a browser tab.</p>
+<aside class="special"><p><strong>Pro tip! </strong> If you want to use your terminal for other commands while VS Code is running, press Ctrl+C on the command line.  VS Code will continue running </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Create a Bash Script to Stop VS Code" duration="0">
+        <p>Now you&#39;ll create a script that you can use to stop VS Code.</p>
+<h2 is-upgraded>Go Home</h2>
+<p>Make sure you are in your home directory by typing <code>cd ~</code></p>
+<h2 is-upgraded>Create a New File</h2>
+<p>You&#39;ll create a new file where we will store our script&#39;s instructions.  This will be a <strong>hidden</strong> file at the root of your virtual machine.</p>
+<pre><code>nano .stopvscode</code></pre>
+<p>This will open the <strong>nano</strong> terminal text editor again.  Still: don&#39;t panic</p>
+<p>Copy and paste the instructions into the text file.</p>
+<h3 is-upgraded><a href="https://gist.github.iu.edu/elliott/8f7fbcee899588f1c6873137b6c8de8d" target="_blank">.stopvscode</a></h3>
+<pre><code>#!/bin/bash
+# This script will terminate all running Visual Studio Code processes
+
+killall code-server
+
+echo &#34;***NOTE:  Use the &#39;ps&#39; command to see if processes have stopped.&#34;</code></pre>
+<p>Save the file by typing <code>Ctrl+X</code> and then <code>Y</code>.</p>
+<h2 is-upgraded>Stopping VS Code</h2>
+<p>You can now stop a running instance of VS Code by typing the following instruction while in your home directory:</p>
+<pre><code>bash .stopvscode</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Helpful Linux Commands" duration="0">
+        <p>When you run your .startvscode script, you are launching VS Code as a <strong>process.</strong>  Your virtual machine can run multiple processes at once.</p>
+<p>If you want to see which processes are running, you can use the <code>ps</code> command.</p>
+<p>If VS Code is running, you will see one or more <code>code-server</code> processes.  (More processes are consumed when VS Code is doing more things.)</p>
+<p>If you accidentally close the browser tab where VS Code is running, you&#39;ll need to stop it and start it again:</p>
+<pre><code>bash .startvscode
+bash .stopvscode</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
