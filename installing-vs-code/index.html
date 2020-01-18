@@ -82,10 +82,10 @@
 <h2 is-upgraded>Store the Current Version Number of Code Server</h2>
 <p>We are using a tool called <strong>code-server </strong>to run VS Code on our virtual machine.  We need to find the most recently released version number, which we&#39;ll store in a variable called <code>VERSION</code>.</p>
 <p>Copy and paste the following code into your command line (it&#39;s a long command, so copy all the way to the right):</p>
-<pre><code>export VERSION=`curl -s https://api.github.com/repos/cdr/code-server/releases/latest | grep -oP &#39;&#34;tag_name&#34;: &#34;\K(.*)(?=&#34;)&#39;`</code></pre>
+<pre><code>export VERSION=2.1698-vsc1.41.1</code></pre>
 <h2 is-upgraded>Download Code Server</h2>
 <p>You can now download the most up-to-date version of code-server.</p>
-<p>Copy and paste the following code into your command line:</p>
+<p>Copy and paste the following code into your command line (it&#39;s a long command, so copy all the way to the right)::</p>
 <pre><code>wget https://github.com/cdr/code-server/releases/download/$VERSION/code-server$VERSION-linux-x86_64.tar.gz</code></pre>
 <p>Extract the archive:</p>
 <pre><code>tar -xvzf code-server$VERSION-linux-x86_64.tar.gz</code></pre>
