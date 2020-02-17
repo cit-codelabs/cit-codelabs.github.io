@@ -1,0 +1,331 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Creating a Google Cloud Function</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="creating-cloud-function"
+                  title="Creating a Google Cloud Function"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This is a step-by-step review of the process of creating a Google Cloud Function.  </p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/4f8d5421765ff422.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What Technologies Are We Using?</strong></h2>
+<ul>
+<li>The <strong>Cloud Function</strong> (GCF) will be implemented in Google Cloud Platform (GCP)</li>
+<li>Your development environment will be the <strong>Google Cloud Shell</strong>, using the <strong>Code Editor</strong></li>
+<li>The logic is written in <strong>JavaScript</strong>, packaged by <strong>Node.js</strong></li>
+<li>Source code for the GCF will be deployed from a <strong>Cloud Source Repository</strong></li>
+<li>You will also create a remote <strong>Git</strong> repository on <strong>GitHub.IU</strong> so that you can securely store and review your code even after your GCP credits have expired.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Overview of the Steps" duration="0">
+        <p>When creating a Cloud Function from scratch, you should perform each of the following steps <strong>in order</strong>.</p>
+<ol type="1" start="1">
+<li>Create a remote Git repository on GitHub.IU</li>
+<li>Create a Cloud Source Repository in the Google Cloud Platform (GCP)</li>
+<li>Create a Google Cloud Function (GCF) in the Google Cloud Platform</li>
+<li>Create a project directory within Cloud Shell, then enter it</li>
+<li>Initialize a new Node package</li>
+<li>Create a local Git repository and connect it to your remotes</li>
+<li>Write your code</li>
+<li>Commit your code &amp; update the Node package version</li>
+<li>Push your code to your remote repositories</li>
+<li>Deploy your code to the Cloud Function</li>
+<li>Test your Cloud Function</li>
+</ol>
+<aside class="special"><p><strong>Pro Tip: </strong>You can repeat steps 7-11 as many times as you need in order to get your function to execute properly.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Create a Repository on GitHub.IU" duration="0">
+        <p>You will want to provide a repository in which you can store your code.</p>
+<p>This backup allows for the following:</p>
+<ol type="1" start="1">
+<li>You will have access to your code after your Google Cloud Platform (GCP) credits have expired.</li>
+<li>You can share this repository with the instructor to help troubleshoot errors.</li>
+<li>It&#39;s easy to feature this repository on your public GitHub profile, if you choose.</li>
+</ol>
+<h2 is-upgraded>Visit GitHub.IU</h2>
+<p>In a browser on your computer, <strong>open a new tab</strong> and log into GitHub.IU.</p>
+<p><a href="http://github.iu.edu" target="_blank"><paper-button class="colored" raised>Connect to GitHub.IU</paper-button></a></p>
+<p>Connect with your standard IU username and passphrase.  You will <em>not</em> need to use two-factor authentication for this service.</p>
+<h2 is-upgraded>Create a New Repository</h2>
+<p>Once logged in, create a new remote repository.  There are a few ways to do this.</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>When you first log in, you can click the &#34;New Repository&#34; button.  Other pages within GitHub have a similar button that just says &#34;New.&#34;  Both perform the same action.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 253.85px" src="img/5545a7d392d5573d.png"></p>
+</td></tr>
+</table>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Alternatively, you can go to the &#34;+&#34; symbol in the top right of the browser window and choose the &#34;New Repository&#34; option.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 242.50px" src="img/1c14c18ae5d98903.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded>Name the Repository</h2>
+<p>Give your repository a logical name.  You&#39;ll end up with many repositories, so organizing them now is a very good idea.</p>
+<p>For this tutorial, we will use the name:</p>
+<p><code>cit41200_gcf_bmi_calculator</code></p>
+<h2 is-upgraded>Review the Created Repository</h2>
+<p>The next GitHub page takes you to your empty repository and walks you through the steps to add content to it.  These steps will be described in the upcoming sections of this tutorial.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>Keep this tab open so that you can copy the instructions later.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Create a Repository in Google Cloud Source Repositories" duration="0">
+        <p>This repository will be where you deposit the source code for your Google Cloud Function (GCF.)  Its contents should mirror those in your GitHub.IU repository, but you will lose access to the Cloud Source Repositories when your Google Cloud Platform (GCP) credits expire.</p>
+<aside class="special"><p><strong>Remember! </strong> Google Cloud Source Repositories is just like &#34;GitHub for Google.&#34;  You can execute the same Git commands on a Source Repo as you can on any other GitHub repository.</p>
+</aside>
+<h2 is-upgraded>Create the Repository</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>In the GCP interface, choose the hamburger menu in the top left and scroll down to the <strong>Source Repositories </strong>under the <strong>Tools</strong> heading.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="img/983f326c1230f44c.png"></p>
+</td></tr>
+</table>
+<p>Once in the Cloud Source Repositories window, click the &#34;Add repository&#34; button.</p>
+<p class="image-container"><img style="width: 143.00px" src="img/2c977976d77f483a.png"></p>
+<p>You will create a <strong>new</strong> repository.</p>
+<p class="image-container"><img style="width: 617.00px" src="img/4084b53b533b7b29.png"></p>
+<aside class="warning"><p><strong>Important Note:</strong> We cannot connect to our external repository on GitHub.IU because the enterprise GitHub settings will not allow an external connection.</p>
+</aside>
+<h2 is-upgraded>Name Your Repository</h2>
+<p>Give your repository a name that <em>makes sense to you</em> and <em>references the specific project.  </em>You will end up with a lot of repositories.</p>
+<p>For this tutorial we will use the name:</p>
+<p><code>cit41200_gcf_bmi_calculator</code></p>
+<h2 is-upgraded>Select Your Repository Options</h2>
+<p>When you arrive at the overview page for your repository, choose the following options:</p>
+<ul>
+<li>&#34;Push code from a local Git repository&#34;</li>
+<li>Authentication: &#34;Google Cloud SDK&#34;</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/ee370e2aeee13f1d.png"></p>
+<aside class="special"><p><strong>Pro Tip: </strong>Keep this tab open so that you can copy the instructions later.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Create a Google Cloud Function" duration="0">
+        <p>Now you will create and configure the Google Cloud Function (GCF) in the Google Cloud Platform (GCP).</p>
+<h2 is-upgraded>Enter the Cloud Functions Dashboard</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>From the GCP project dashboard, click the hamburger menu at the top left and choose &#34;Cloud Functions&#34; from the Compute heading.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="img/9b2c997f54e593cc.png"></p>
+</td></tr>
+</table>
+<p>If the Google Cloud Functions API is not enabled, click &#34;Enable API.&#34;  This adds the Cloud Functions to the billing for this project.</p>
+<h2 is-upgraded>Create and Configure a Function</h2>
+<p><br>Click the &#34;Create function&#34; button.</p>
+<p class="image-container"><img style="width: 135.00px" src="img/184c184dc0001bdb.png"></p>
+<p>If you already have functions created, the button will be near the top of the GCF dashboard.</p>
+<p>Add the settings to the function as shown.  Detailed settings appear below.</p>
+<p class="image-container"><img style="width: 573.00px" src="img/1488a36b64d15ea3.png"></p>
+<p>Name for the Function: <code>cit41200_gcf_bmi_calculator</code></p>
+<p>Trigger: HTTP</p>
+<p>Source Code: Cloud Source Repository</p>
+<p>Runtime: Node.js 8 (Beta)</p>
+<p>Repository: <code>cit41200_gcf_bmi_calculator</code></p>
+<p>Branch / tag: Branch</p>
+<p>Branch name: master</p>
+<p>Directory with source code: /</p>
+<p>Function to execute: calculateBMI</p>
+<p>Click the &#34;Create&#34; button.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>Your function will produce an error in the GCF dashboard.  <em>This is OK!</em>  The GCF is looking for source code in your Source Repositories, but you don&#39;t have any code written yet!  We&#39;ll get there in the next few steps.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Create a project directory within Cloud Shell" duration="0">
+        <p>From the Google Cloud Platform console, click the button for Cloud Shell.  </p>
+<p class="image-container"><img style="width: 146.00px" src="img/e959e14cf2842a61.png"></p>
+<p>Inside the Cloud Shell, create a new directory for the source code for this project and then enter it:</p>
+<pre><code>mkdir gcf_bmi_calculator
+cd gcf_bmi_calculator</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Create a new Node.js Package" duration="0">
+        <p>Your application logic is written in JavaScript and is delivered as a Node.js package.  You&#39;ll need to ensure you are using a compatible version of Node.js, install a compatible version if needed, and then create a new Node.js package.</p>
+<h2 is-upgraded>Verify Node.js Version</h2>
+<p>GCF expects a Node.js runtime version of 6 or 8.  We will use <strong>Node.js v 8.10</strong> for this tutorial.</p>
+<pre><code>node -v</code></pre>
+<p>If the Node version is anything other than 8, use <strong>Node Version Manager</strong> (nvm) to install the correct version.</p>
+<pre><code>nvm install 8.10</code></pre>
+<p>You should see a message that you are currently using Node.js 8.10.</p>
+<h2 is-upgraded>Initialize a new Node Package</h2>
+<p>You will now use the <strong>Node Package Manager</strong> (npm) to create a new Node.js package.</p>
+<pre><code>npm init</code></pre>
+<p>Proceed through the dialog to input any values you understand.  If the default value (the value that appears in parenthesis) is acceptable, you can simply press <strong><code>Enter</code></strong>.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>For a speedy setup, initialize the package with all default values by typing<br><code>npm init --yes</code></p>
+</aside>
+<p>At the end of this configuration, you will have created a <code>package.json</code> file that contains the <strong>manifest</strong> for your Node.js package.</p>
+<h2 is-upgraded>Create Your Code File</h2>
+<p>The <code>package.json</code> file contains configuration information for your Node.js package.  It does not, however contain any functional logic.  By default, your logic should be stored in an <code>index.js</code> file.</p>
+<p>To create this file, use the following Unix command:</p>
+<pre><code>touch index.js</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6: Create and Connect Your Local Git Repository" duration="0">
+        <p>With your files created, you should create your local Git repository and then connect it to your two remote repositories (GitHub.IU and Google Cloud Source Repositories.)</p>
+<pre><code>git init
+git add .
+git commit -m &#34;Initial Commit&#34;</code></pre>
+<h2 is-upgraded>Connect to Your Remote GitHub.IU Repository</h2>
+<p>You will add a remote nicknamed <strong>origin</strong> that will connect your local repository to your repository on GitHub.IU.</p>
+<aside class="warning"><p><strong>Important Note: </strong>You will need the full https:// address to your GitHub.IU repository for this step.  Replace the repository name in the code below.</p>
+</aside>
+<pre><code>git remote add origin https://github.iu.edu/USERNAME/REPOSITORY_NAME.git</code></pre>
+<h2 is-upgraded>Connect to Your Remote Cloud Source Repositories Instance</h2>
+<p>You will add a remote nicknamed <strong>google</strong> that will connect your local repository to your repository on Cloud Source Repositories.  You will also configure the repository to use your GCP credentials instead of a username and password.</p>
+<aside class="warning"><p><strong>Important Note: </strong>You will need the <strong>project id</strong> (not project name) and the <strong>repository name</strong> for this step.  Replace each in the code below.</p>
+</aside>
+<pre><code>gcloud init
+git config --global credential.https://source.developers.google.com.helper gcloud.sh
+git remote add google https://source.developers.google.com/p/PROJECT_ID/r/REPOSITORY_NAME</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>The setup strings that you need for these steps are provided by both GitHub.IU and Cloud Source Repositories on the default landing page for each empty repository.</p>
+</aside>
+<p>You are now able to push code from your local repository to <em>both</em> of your remote repositories.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7: Write Your Code" duration="0">
+        <p>From the toolbar in the Cloud Shell window, you can open the browser-based <strong>Code Editor</strong>.</p>
+<p class="image-container"><img style="width: 260.00px" src="img/f1a1682638ec049b.png"></p>
+<p>This will allow you to edit your code files in a simple but effective plain text editor.</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>From the Files menu on the left, navigate through your directory structure until you find your newly-created <code>index.js</code> file.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 298.00px" src="img/f50e9ac9af953966.png"></p>
+</td></tr>
+</table>
+<p>With your <code>index.js</code> file loaded in the editor, input the following code:</p>
+<pre><code>// Imperial calculation: 730 * weight / (height * height)
+exports.calculateBMI = (req, res) =&gt; {
+  
+   const userHeight = req.query.height;
+
+   const userWeight = req.query.weight;
+
+   const bmi = ((730 * userWeight) / (userHeight * userHeight));
+
+   const message = `Your BMI is ${bmi}.`;
+
+   res.status(200).send(message);
+
+}</code></pre>
+<p>Choose Save from the File menu.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 8: Commit Your Code" duration="0">
+        <p>Once you have made a sufficient number of changes to your code, you can make a Git commit and store your current code version.</p>
+<h2 is-upgraded>Create a Git commit</h2>
+<pre><code>git add .
+git commit -m &#34;YOUR MESSAGE HERE&#34;</code></pre>
+<h2 is-upgraded>Update the Node.JS package version</h2>
+<pre><code>npm version minor</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>Versions are noted in the following order:  <strong>MAJOR.MINOR.PATCH</strong>  When updating your version, you must note what level of changes were made.</p>
+<ul>
+<li><strong>MAJOR</strong> is for large overhauls of existing functionality or interfaces.  (<em>Example: Word 2012 to Word 2016 is a major update.)</em></li>
+<li><strong>MINOR</strong> is for the addition of new functionality to the existing application.<br></li>
+<li><strong>PATCH</strong> is for bug fixes or very minor tweaks.</li>
+</ul>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 9: Push Your Code to Your Remote Repositories" duration="0">
+        <p>Now you must push your code to your remote repositories.  You <strong>must</strong> push to your Cloud Source Repository <em>every</em> time to see changes in your Cloud Function.  You <strong>may</strong> push to your GitHub.IU as often as you&#39;d like to keep your backup intact.</p>
+<h2 is-upgraded>Push to Cloud Source Repositories</h2>
+<p>Your Cloud Source Repository is nicknamed <strong>google</strong>.  You need to push the master branch of your local Git repository there.</p>
+<pre><code>git push -u google master</code></pre>
+<h2 is-upgraded>Push to GitHub.IU</h2>
+<p>Your Cloud Source Repository is nicknamed <strong>origin</strong>.  You need to push the master branch of your local Git repository there.</p>
+<pre><code>git push -u origin master</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 10: Deploy Your Code to GCF" duration="0">
+        <p>Now that your current code is pushed to the remote repository on Cloud Source Repositories, you must instruct your Google Cloud Function to retrieve the latest version of that code.  There are <strong>two ways</strong> to do this.</p>
+<h2 is-upgraded>Edit/Save Your GCF</h2>
+<p>The easiest way to redeploy your source code is to do the following:</p>
+<ol type="1" start="1">
+<li>In a browser, go to your Cloud Function details view</li>
+<li>Click the Edit button in the upper menu</li>
+<li>Scroll to the bottom of the page and click the Save button</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/998034389b994773.png"></p>
+<p>Although you did not make any edits to the GCF, the source code will be retrieved from Cloud Source Repositories.</p>
+<h2 is-upgraded>Deploy Using the Google CLI</h2>
+<p>You can also instruct your GCF to retrieve the source code from the repository using the command line.</p>
+<aside class="warning"><p><strong>Important Note: </strong>You will need the <strong>cloud function name, </strong>the <strong>project id</strong> (<em>not</em> the project name) and the <strong>repository name</strong> for this step.  Replace each in the code below.</p>
+</aside>
+<pre><code>gcloud functions deploy CLOUD_FUNCTION_NAME --source=
+https://source.developers.google.com
+/projects/PROJECT_ID
+/repos/REPOSITORY_NAME</code></pre>
+<p>No matter which method you choose, it will take up to two minutes for your GCF to deploy.  Watch for the green checkmark on the GCF dashboard to tell you when the function is ready.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 11: Test your Cloud Function" duration="0">
+        <p>To test your Cloud Function, you will need to use the HTTP trigger (URL) that was created for you when you created your Function.</p>
+<p>You can find your trigger under the Trigger tab of the Cloud Function detail screen.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/94fc7eef1a90a22e.png"></p>
+<aside class="warning"><p><strong>Important Note: </strong>Simply running this URL in the browser will return an error!  Your GCF depends on data in the querystring of your HTTP request!</p>
+</aside>
+<p>Given the code written in this tutorial, your querystring must have <strong>two</strong> key:value pairs.  Here is a  breakdown of the HTTP request&#39;s structure:</p>
+<p><code>https://REGION-PROJECT_ID.cloudfunctions.net/FUNCTION_NAME?KEY1=VALUE1&amp;KEY2=VALUE2</code></p>
+<p>For example, the link to my demo GCF is:</p>
+<p><code>https://us-central1-sp19-41200-demo-gcf-bmi-calc.cloudfunctions.net/sp19_41200_demo_gcf_bmi_calc?height=70&amp;weight=190</code></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

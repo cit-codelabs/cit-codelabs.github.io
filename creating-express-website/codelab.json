@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-02-13T22:33:58Z",
+  "id": "creating-express-website",
+  "duration": 0,
+  "title": "Creating an Express Website",
+  "authors": "elliott",
+  "summary": "In this tutorial you'll learn how to use the Express Generator to properly set up the scaffold for an Express website served with Node.",
+  "source": "1olKDbEhc0JW_DbLSZnUdTivSkm-wEcgEdArXKS7EqzQ",
+  "theme": "gcp",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "GCP"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "creating-express-website"
+}

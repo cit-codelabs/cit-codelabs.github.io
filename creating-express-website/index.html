@@ -1,0 +1,143 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Creating an Express Website</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="creating-express-website"
+                  title="Creating an Express Website"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This is a step-by-step review of the process of creating a new NodeJS website that uses ExpressJS for backend functionality.</p>
+<p>This Codelab assumes that you have access to a Linux machine that has Node installed.</p>
+<p>Your Google Cloud Shell has all of the software required for this Codelab.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/4f8d5421765ff422.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What Technologies Are We Using?</strong></h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Overview of the Steps" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Create the Website Scaffold" duration="0">
+        <p>Proceed to the directory where you want to store your website&#39;s working files.</p>
+<h2 is-upgraded>Install the Express Generator</h2>
+<p>Install the <a href="https://expressjs.com/en/starter/generator.html" target="_blank">Express Generator</a> with the following command:</p>
+<pre><code>npm install -g express-generator</code></pre>
+<h2 is-upgraded>Create Your Site</h2>
+<p>Create the scaffold for your new site with the following command.  This will start a site named <code>website_name</code> that uses the Handlebars view engine.</p>
+<pre><code>express --view=hbs website_name</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>You can use different view engines in your application.  <a href="https://github.com/expressjs/express/wiki#template-engines" target="_blank">A complete list can be found here.</a></p>
+</aside>
+<h2 is-upgraded>Enter the Site&#39;s Directory</h2>
+<p>Express created a new directory with the name of your application.  Enter that directory before moving on.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Add Additional Files" duration="0">
+        <p>There are a variety of files that you will want to add to the scaffold that was created:</p>
+<pre><code>touch .gitignore
+touch .env
+touch start.js
+touch README.md</code></pre>
+<h2 is-upgraded>Edit .gitignore</h2>
+<p>Add the following lines to your <code>.gitignore</code> file.</p>
+<h3 is-upgraded>.gitignore</h3>
+<pre><code>node_modules
+.env</code></pre>
+<h2 is-upgraded>Edit README.md</h2>
+<p>Your README file uses the <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown syntax</a> to add context and notes about the application you are developing.  You should add a brief overview of the project here.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>If you&#39;ve used a number of articles, tutorials, or blog posts to help you build your application, update your README with links to the most valuable resources for later reference.</p>
+</aside>
+<h2 is-upgraded>Edit start.js</h2>
+<p>The <code>start.js</code> file is a script that allows you to configure your application&#39;s launch configuration.  It&#39;s a good practice to keep this configuration separate from the actual app commands located in <code>app.js</code>.</p>
+<p>The following is a very common start.js file:</p>
+<h3 is-upgraded>start.js</h3>
+<pre><code>const app = require(&#39;./app&#39;);
+
+const server = app.listen(8081, () =&gt; {
+    console.log(`Express is running on port ${server.address().port}`)
+});
+</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>If you&#39;ve used a number of articles, tutorials, or blog posts to help you build your application, update your README with links to the most valuable resources for later reference.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Install Dependencies" duration="0">
+        <p>Express and Node have a number of packages that must be included in order to serve your website.</p>
+<p>Install those now with this command:</p>
+<pre><code>npm install</code></pre>
+<p>To ensure that you have all of the most updated security patches for all of your packages, also do the following:</p>
+<pre><code>npm audit fix</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Install nodemon" duration="0">
+        <p><code>nodemon</code> is a package that continuously monitors the source files within your application and automatically restarts the Node server when changes are detected.</p>
+<p><code>nodemon</code> is intended to be used only during development, so you will install it for development environments only:</p>
+<pre><code>npm install -D nodemon</code></pre>
+<p>Update the <code>scripts</code> section of your package.json file to allow the use of <code>nodemon</code></p>
+<h3 is-upgraded>package.json</h3>
+<pre><code>&#34;scripts&#34;: {
+  &#34;start&#34;: &#34;node start&#34;,
+  &#34;dev&#34;: &#34;nodemon --watch&#34;
+}</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>To run your application from your development server, use the following command:</p>
+<p><code>npm run dev</code></p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Connect Your Application to GitHub" duration="0">
+        <p>Before proceeding with development of your site, you should ensure that you are tracking your development locally with <strong>git</strong> and are archiving your work at <strong>GitHub</strong>.</p>
+<p>Use this tutorial to help you start and maintain your local and remote repositories.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Go Code!" duration="0">
+        <p>You now have a basic Node / Express / Handlebars template set up.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

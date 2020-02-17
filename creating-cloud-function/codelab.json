@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-02-13T22:03:45Z",
+  "id": "creating-cloud-function",
+  "duration": 0,
+  "title": "Creating a Google Cloud Function",
+  "authors": "elliott",
+  "summary": "In this tutorial you'll learn how to properly configure, back up, and deploy a Google Cloud Function within the Google Cloud Shell",
+  "source": "1QIfM5XMhKe8ktpTe_kVZ_crOsz52Yr0fy6C_eNF_OAc",
+  "theme": "gcp",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "GCP"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "creating-cloud-function"
+}
