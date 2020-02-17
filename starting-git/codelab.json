@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-02-17T15:30:19Z",
+  "id": "starting-git",
+  "duration": 0,
+  "title": "Getting Started with Git",
+  "authors": "elliott",
+  "summary": "In this Codelab, you'll learn how to create local and remote git repositories and sync your work from your local machine to GitHub.IU.",
+  "source": "1h4W175lNpwHl8G29RSJNY0rL3pnoXmGLtIZDdWDH7Ak",
+  "theme": "git",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Git"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "starting-git"
+}

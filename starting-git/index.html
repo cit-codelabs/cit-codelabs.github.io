@@ -1,0 +1,155 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Getting Started with Git</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="starting-git"
+                  title="Getting Started with Git"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>A few students have asked for a quick review of the Git commands we performed in class.</p>
+<p>While we will soon do a much deeper dive into Git, this should provide you with an overview of the steps you need for a basic local/remote Git repository setup using <strong>GitHub.IU</strong>.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/4f8d5421765ff422.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What is Git?</strong></h2>
+<p>Git is the most common version control system (VCS) in use today.  You can use Git locally to manage your projects, but its true power comes in its remote features and collaborative capabilities.</p>
+<p>Projects managed by Git are referred to as <strong>repositories.  </strong>On your development machine, you&#39;ll have a <strong>local repository</strong> that is then paired with a <strong>remote repository</strong> stored elsewhere.</p>
+<p>We will use GitHub as the place where we store our remote repositories for this tutorial.</p>
+<h2 is-upgraded><strong>What is GitHub?</strong></h2>
+<p>GitHub is an online service where creators can create, store, manage, and collaborate on their projects.  Using GitHub is free.  </p>
+<aside class="special"><p><strong>Pro Tip: </strong>GitHub profiles are rapidly becoming the de facto resume for developers and others who work with IT projects.</p>
+</aside>
+<h2 is-upgraded><strong>What is GitHub.IU?</strong></h2>
+<p>IU has a separate enterprise instance of GitHub (referred to as &#34;GitHub.IU&#34;) to support work by Faculty, Students, and Staff.  While it has <em>most</em> of the same features as the traditional GitHub, there are a few differences.</p>
+<p>Students are encouraged to use GitHub.IU for classwork and personal development projects.  Students should consider building and maintaining a more &#34;professional&#34; public GitHub profile on <a href="https://github.com" target="_blank">GitHub.com</a> for use when searching for internship and career opportunities.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a Sample Project" duration="0">
+        <p>While practicing, it is recommended that you work through this lab with a completely new folder and repository.</p>
+<p>You may refer back to this lab whenever you need to review the commands while working with your &#34;real&#34; projects.</p>
+<h2 is-upgraded><strong>Create a New Directory</strong></h2>
+<p>Create a new directory that will house our <strong>gitpractice</strong> repository.  Then enter that directory</p>
+<pre><code>mkdir gitpractice
+cd gitpractice</code></pre>
+<h2 is-upgraded><strong>Create an Empty Text File</strong></h2>
+<p>Create an empty text file so we have something to push to GitHub.IU</p>
+<pre><code>touch sample.txt</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a Remote Git Repository" duration="0">
+        <p>Your remote repository will be stored on the GitHub.IU service.</p>
+<h2 is-upgraded><strong>Visit GitHub.IU</strong></h2>
+<p>In a browser on your host OS, log into GitHub.IU.</p>
+<p><a href="http://github.iu.edu" target="_blank"><paper-button class="colored" raised>Connect to GitHub.IU</paper-button></a></p>
+<p>Connect with your standard IU username and passphrase.  You will <em>not</em> need to use two-factor authentication for this service.</p>
+<h2 is-upgraded><strong>Create a New Repository</strong></h2>
+<p>Once logged in, create a new <strong>remote</strong> repository.  There are a few ways to do this.</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>When you first log in, you can click the &#34;New Repository&#34; button.</p>
+<p>Other pages within GitHub have a similar button that just says &#34;New.&#34;  Both perform the same action.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 253.85px" src="img/5545a7d392d5573d.png"></p>
+</td></tr>
+</table>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Alternatively, you can go to the &#34;+&#34; symbol in the top right of the browser window and choose the &#34;New Repository&#34; option.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 242.50px" src="img/1c14c18ae5d98903.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>Name the Repository</strong></h2>
+<p>Give your repository a logical name.  You&#39;ll end up with <strong>many</strong> repositories, so organizing them now is a very good idea.</p>
+<p>For this lab, we will use the name</p>
+<p><code>cit_gitpractice</code></p>
+<h2 is-upgraded><strong>Review the Created Repository</strong></h2>
+<p>The next GitHub page takes you to your empty repository and walks you through the steps to add content to it.  These steps will be described in the upcoming sections of this Codelab.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create &amp; Connect a Local Repository" duration="0">
+        <p>Return to your development machine and ensure you are working in your <strong>gitpractice</strong> directory.</p>
+<h2 is-upgraded><strong>Initialize a Local Repository</strong></h2>
+<p>On the command line, create a new local repository.</p>
+<pre>git init</pre>
+<p>The local repository does not require a name.  By convention, there is only <em>ONE</em> repository per project.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>Git allows you to create various versions of your projects in <strong>branches.</strong>  Git branches DO have individual names.  We will work more with branching later.</p>
+</aside>
+<h2 is-upgraded><strong>Quick Review: What Happened?</strong></h2>
+<p>You now have a remote Git repository stored on GitHub.IU and a local Git repository stored within your development machine.</p>
+<p>Both of these repositories are currently empty.</p>
+<p>You will work locally to develop your project.  As you work you will be able to store &#34;snapshots&#34; of your progress.  Git calls these snapshots <strong>commits</strong>.  Commits are automatically stored in your local Git repository.</p>
+<p>When you want to store or share your work, you will move the contents of your local Git repository to the remote Git repository.  Git calls this process a <strong>push</strong>.</p>
+<h2 is-upgraded><strong>Connect your Local and Remote Repositories</strong></h2>
+<p>You must now &#34;marry&#34; the two repositories  together so that they know they are related.</p>
+<pre>git remote add origin https://github.iu.edu/username/cit_gitpractice.git</pre>
+<p>This command tells the <strong>local</strong> repository that its <strong>remote </strong>counterpart is on the GitHub.IU site under your user account, and has the repository name &#34;cit_gitpractice&#34; (all repositories end in &#34;.git&#34;)</p>
+<p><strong><em>origin</em></strong><em> is a nickname</em> that you are giving for this specific remote repository.  &#34;origin&#34; is the default term for a remote, so we will use that here.</p>
+<p><strong>The git remote command will not return a success message. </strong> You will be returned to your terminal prompt.</p>
+<p>You have successfully configured your repositories so that they can exchange information.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Make a Git Commit" duration="0">
+        <p>When making a new commit, you must ensure that any new files are added to the local repository.  </p>
+<pre>git add .</pre>
+<p>The &#34;<strong>.</strong>&#34; tells Git to add all of the files and directories within the current directory.</p>
+<p>Once all files have been added, create your commit.  When making a commit, you should enter a message that describes what has changed in the project since the previous commit.  Make sure the language you use in your commit messages will make sense to you and any potential future collaborators.</p>
+<pre>git commit -m &#34;This is my first commit&#34;</pre>
+<p>Your commit (snapshot) is stored locally within the local Git repository.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>There is no limit to the number of commits you make.  Logical commit opportunities are up to individual developers, but a commit should represent some sort of interim stopping point in your project (after defining a new set of model classes or implementing the functionality of a controller.)</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Push to the Remote Repository" duration="0">
+        <p>When you are ready, you may move your commited files from the <strong>local</strong> to the <strong>remote</strong> repository.  </p>
+<pre>git push -u origin master</pre>
+<h2 is-upgraded><strong>Breakdown of the Push Command</strong></h2>
+<p><strong>git</strong> initiates the Git software.  All Git commands start by opening &#34;git.&#34;</p>
+<p><strong>push</strong> is the action that transfers the committed contents of the local repository to the remote repository you connected to earlier.</p>
+<p><strong>-u</strong> indicates which &#34;upstream&#34; branch we are working with.  We will discuss branching in a future lab.  Continue to use this command because it is an important habit to have.</p>
+<p><strong>origin</strong> is the <em>nickname</em> for the remote repository you connected earlier.  A local Git repository can connect to multiple remote repositories, so you must specify the destination - even if there is only one remote.</p>
+<p><strong>master</strong> is the default name for the working branch of your project.  Branching will be discussed in a future lab.</p>
+<h2 is-upgraded><strong>Review</strong></h2>
+<p>Go back to your browser and refresh your GitHub.IU page for the remote repository.  You should see your new, empty sample.txt file listed as the only file in the repository.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
