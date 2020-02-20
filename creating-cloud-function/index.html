@@ -126,9 +126,9 @@
 <p>When you arrive at the overview page for your repository, choose the following options:</p>
 <ul>
 <li>&#34;Push code from a local Git repository&#34;</li>
-<li>Authentication: &#34;Google Cloud SDK&#34;</li>
+<li>Authentication: &#34;SSH Authentication&#34;</li>
 </ul>
-<p class="image-container"><img style="width: 624.00px" src="img/ee370e2aeee13f1d.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/a1eb85e7a7d32bd5.png"></p>
 <aside class="special"><p><strong>Pro Tip: </strong>Keep this tab open so that you can copy the instructions later.</p>
 </aside>
 
@@ -179,11 +179,11 @@ cd gcf_bmi_calculator</code></pre>
       <google-codelab-step label="Step 5: Create a new Node.js Package" duration="0">
         <p>Your application logic is written in JavaScript and is delivered as a Node.js package.  You&#39;ll need to ensure you are using a compatible version of Node.js, install a compatible version if needed, and then create a new Node.js package.</p>
 <h2 is-upgraded>Verify Node.js Version</h2>
-<p>GCF expects a Node.js runtime version of 6 or 8.  We will use <strong>Node.js v 8.10</strong> for this tutorial.</p>
+<p>GCF expects a Node.js runtime version of 8 or 10.  We will use <strong>Node.js v 10.14</strong> for this tutorial.</p>
 <pre><code>node -v</code></pre>
-<p>If the Node version is anything other than 8, use <strong>Node Version Manager</strong> (nvm) to install the correct version.</p>
-<pre><code>nvm install 8.10</code></pre>
-<p>You should see a message that you are currently using Node.js 8.10.</p>
+<p>If the Node version is anything other than 10, use <strong>Node Version Manager</strong> (nvm) to install the correct version.</p>
+<pre><code>nvm install 10.14</code></pre>
+<p>You should see a message that you are currently using Node.js 10.14.3.</p>
 <h2 is-upgraded>Initialize a new Node Package</h2>
 <p>You will now use the <strong>Node Package Manager</strong> (npm) to create a new Node.js package.</p>
 <pre><code>npm init</code></pre>
@@ -195,6 +195,18 @@ cd gcf_bmi_calculator</code></pre>
 <p>The <code>package.json</code> file contains configuration information for your Node.js package.  It does not, however contain any functional logic.  By default, your logic should be stored in an <code>index.js</code> file.</p>
 <p>To create this file, use the following Unix command:</p>
 <pre><code>touch index.js</code></pre>
+<h2 is-upgraded>Create a README File</h2>
+<p>You should create a README file at the root level of your site.  The contents of this file are what will display on the GitHub repository&#39;s home page.</p>
+<p>This is a great place to make notes to yourself and collaborators: link to resources, explain different versions, etc.</p>
+<p>To create this file, use the following Unix command:</p>
+<pre><code>touch README.md</code></pre>
+<p><br>At a minimum, edit the README file to add a title and a basic description of the project.</p>
+<h2 is-upgraded>Create a .gitignore File</h2>
+<p>Create a <code>.gitignore</code> file to ensure that you only upload necessary files to your GitHub repository.</p>
+<p>To create this file, use the following Unix command:</p>
+<pre><code>touch .gitignore</code></pre>
+<p><br>Edit your <code>.gitignore</code> and add the following line:</p>
+<pre><code>node_modules</code></pre>
 
 
       </google-codelab-step>
@@ -213,9 +225,7 @@ git commit -m &#34;Initial Commit&#34;</code></pre>
 <p>You will add a remote nicknamed <strong>google</strong> that will connect your local repository to your repository on Cloud Source Repositories.  You will also configure the repository to use your GCP credentials instead of a username and password.</p>
 <aside class="warning"><p><strong>Important Note: </strong>You will need the <strong>project id</strong> (not project name) and the <strong>repository name</strong> for this step.  Replace each in the code below.</p>
 </aside>
-<pre><code>gcloud init
-git config --global credential.https://source.developers.google.com.helper gcloud.sh
-git remote add google https://source.developers.google.com/p/PROJECT_ID/r/REPOSITORY_NAME</code></pre>
+<pre><code>git remote add google https://source.developers.google.com/p/PROJECT_ID/r/REPOSITORY_NAME</code></pre>
 <aside class="special"><p><strong>Pro Tip: </strong>The setup strings that you need for these steps are provided by both GitHub.IU and Cloud Source Repositories on the default landing page for each empty repository.</p>
 </aside>
 <p>You are now able to push code from your local repository to <em>both</em> of your remote repositories.</p>
