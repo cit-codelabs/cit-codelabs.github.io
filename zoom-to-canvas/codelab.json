@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-03-27T15:52:25Z",
+  "id": "zoom-to-canvas",
+  "duration": 0,
+  "title": "Adding a Zoom Room to Canvas",
+  "authors": "elliott",
+  "summary": "In this Codelab, you'll learn how to create a static Zoom room and link to it in your Canvas course",
+  "source": "1mGpBxxRT5Eg8LN7thSaK9Mp4JgCGDlbHbXxugJTtF40",
+  "theme": "teaching-online",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Teaching Online"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "zoom-to-canvas"
+}
