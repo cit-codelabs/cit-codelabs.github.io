@@ -1,0 +1,101 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Host a Python Website on App Engine</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="host-python-app-engine"
+                  title="Host a Python Website on App Engine"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This tutorial will demonstrate how to deploy an existing Python site to App Engine.</p>
+<p>A bare bones Python site can be found in <a href="https://github.iu.edu/cit37400-dev/python-api-setup/tree/v.1" target="_blank">this Github repository</a>.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/4f8d5421765ff422.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What Technologies Are We Using?</strong></h2>
+<ul>
+<li>Python 3</li>
+<li>Flask</li>
+<li>Google Cloud Command Line Interface</li>
+<li>Google Cloud App Engine</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Install Google Cloud CLI" duration="0">
+        <p>Install the Google Cloud Command Line Interface for your specific platform by following the <a href="https://cloud.google.com/sdk/docs/install" target="_blank">instructions provided by Google</a>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Create a Google Cloud Project" duration="0">
+        <p><strong>Skip this step if you already have a project created. You will need the project&#39;s name in Step 4.</strong></p>
+<p>Proceed to the <a href="https://console.cloud.google.com" target="_blank">Google Cloud Console</a> to create a new Google Cloud Project.</p>
+<p>Each GCP project can host ONLY ONE App Engine project. If you need to host more than one site, you&#39;ll have to create a new project for each.</p>
+<p>Copy the name of the project. You will use it in the next step.</p>
+<p>Step 3: Navigate to Your Files</p>
+<p>On the command line, navigate into the directory that contains your application&#39;s files.</p>
+<p>If you are using the sample application noted above, this would be the directory that contains the <code>main.py</code> file.</p>
+<p>Step 4: Configure Google Cloud CLI</p>
+<p>Open the Terminal/command line on your local machine where you install the Google Cloud CLI. Set the current working project with the following command:</p>
+<pre><code>gcloud config set project project-name</code></pre>
+<p>Use the project name you created in Step 2 in place of <em><code>project-name</code></em></p>
+<p>Step 5: Add a Configuration File</p>
+<p>All App Engine deployments require a configuration file entitled <code>app.yaml</code></p>
+<p>Using your favorite code editor, create an <code>app.yaml</code> file in the top level of the directory holding your website files.</p>
+<p>Add the following to the <code>app.yaml</code> file.</p>
+<pre><code>runtime: python39</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6: Deploy your Application" duration="0">
+        <p>With your Cloud project selected, deployment to App Engine is simple:</p>
+<pre><code>gcloud app deploy</code></pre>
+<p>The first time that you deploy your app, you will be asked to choose a region. Select the region that is geographically closest to you (likely <strong>us-central</strong>). You will not be asked this on subsequent deployments.</p>
+<p>Step 7: View your Application</p>
+<p>After a few moments, your application will be hosted online in App Engine. Look for the <strong>Target URL</strong> in the App Engine setup notifications.</p>
+<p>From the command line, you can also launch your application in a browser with this command:</p>
+<pre><code>gcloud app browse</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Git Example" duration="0">
+        <p><a href="https://github.iu.edu/cit37400-dev/python-api-setup/tree/v.2" target="_blank">A sample remote repository for this application can be found here.</a></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
