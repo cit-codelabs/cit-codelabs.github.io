@@ -56,15 +56,27 @@
 <p>Proceed to the <a href="https://console.cloud.google.com" target="_blank">Google Cloud Console</a> to create a new Google Cloud Project.</p>
 <p>Each GCP project can host ONLY ONE App Engine project. If you need to host more than one site, you&#39;ll have to create a new project for each.</p>
 <p>Copy the name of the project. You will use it in the next step.</p>
-<p>Step 3: Navigate to Your Files</p>
-<p>On the command line, navigate into the directory that contains your application&#39;s files.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Navigate to Your Files" duration="0">
+        <p>On the command line, navigate into the directory that contains your application&#39;s files.</p>
 <p>If you are using the sample application noted above, this would be the directory that contains the <code>main.py</code> file.</p>
-<p>Step 4: Configure Google Cloud CLI</p>
-<p>Open the Terminal/command line on your local machine where you install the Google Cloud CLI. Set the current working project with the following command:</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Configure Google Cloud CLI" duration="0">
+        <p>Open the Terminal/command line on your local machine where you install the Google Cloud CLI. Set the current working project with the following command:</p>
 <pre><code>gcloud config set project project-name</code></pre>
 <p>Use the project name you created in Step 2 in place of <em><code>project-name</code></em></p>
-<p>Step 5: Add a Configuration File</p>
-<p>All App Engine deployments require a configuration file entitled <code>app.yaml</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Add a Configuration File" duration="0">
+        <p>All App Engine deployments require a configuration file entitled <code>app.yaml</code></p>
 <p>Using your favorite code editor, create an <code>app.yaml</code> file in the top level of the directory holding your website files.</p>
 <p>Add the following to the <code>app.yaml</code> file.</p>
 <pre><code>runtime: python39</code></pre>
