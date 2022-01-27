@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2022-01-27T15:34:11Z",
+  "id": "creating-cloud-function-command-line",
+  "duration": 0,
+  "title": "Creating a Google Cloud Function",
+  "authors": "elliott",
+  "summary": "In this tutorial you'll learn how to properly create and deploy a Google Cloud Function within the Google Cloud Shell",
+  "source": "1bPZOOk-kJTxxWpFyOkuo75g4qKzoHP_p7qagHhPjf4w",
+  "theme": "gcp",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "GCP"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "creating-cloud-function-command-line"
+}

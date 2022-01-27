@@ -1,0 +1,255 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Creating a Google Cloud Function</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="creating-cloud-function-command-line"
+                  title="Creating a Google Cloud Function"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This is a step-by-step review of the process of creating a Google Cloud Function.  </p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/4f8d5421765ff422.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What Technologies Are We Using?</strong></h2>
+<ul>
+<li>The <strong>Cloud Function</strong> (GCF) will be implemented in Google Cloud Platform (GCP)</li>
+<li>Your development environment will be the <strong>Google Cloud Shell</strong>, using the <strong>Code Editor</strong></li>
+<li>The logic is written in <strong>JavaScript</strong>, packaged by <strong>Node.js</strong></li>
+<li>You will also create a remote <strong>Git</strong> repository on <strong>GitHub.IU</strong> so that you can securely store and review your code even after your GCP credits have expired.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Overview of the Steps" duration="0">
+        <p>When creating a Cloud Function from scratch, you should perform each of the following steps <strong>in order</strong>.</p>
+<ol type="1" start="1">
+<li>Create a remote Git repository on GitHub.IU</li>
+<li>Create a project directory within Cloud Shell, then enter it</li>
+<li>Initialize a new Node package</li>
+<li>Create and connect your local repository</li>
+<li>Write your code</li>
+<li>Deploy your code to the Cloud Function</li>
+<li>Test your Cloud Function</li>
+<li>Commit your code &amp; update the Node package version</li>
+<li>Push your code to your remote repository</li>
+</ol>
+<aside class="special"><p><strong>Pro Tip: </strong>You can repeat steps 5-9 as many times as you need in order to get your function to execute properly.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Create a Repository on GitHub.IU" duration="0">
+        <p>You will want to provide a repository in which you can store your code.</p>
+<p>This backup allows for the following:</p>
+<ol type="1" start="1">
+<li>You will have access to your code after your Google Cloud Platform (GCP) credits have expired.</li>
+<li>You can share this repository with the instructor to help troubleshoot errors.</li>
+<li>It&#39;s easy to feature this repository on your public GitHub profile, if you choose.</li>
+</ol>
+<h2 is-upgraded>Visit GitHub.IU</h2>
+<p>In a browser on your computer, <strong>open a new tab</strong> and log into GitHub.IU.</p>
+<p><a href="http://github.iu.edu" target="_blank"><paper-button class="colored" raised>Connect to GitHub.IU</paper-button></a></p>
+<p>Connect with your standard IU username and passphrase.  You will <em>not</em> need to use two-factor authentication for this service.</p>
+<h2 is-upgraded>Create a New Repository</h2>
+<p>Once logged in, create a new remote repository.  There are a few ways to do this.</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>When you first log in, you can click the &#34;New Repository&#34; button.  Other pages within GitHub have a similar button that just says &#34;New.&#34;  Both perform the same action.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 253.85px" src="img/5545a7d392d5573d.png"></p>
+</td></tr>
+</table>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Alternatively, you can go to the &#34;+&#34; symbol in the top right of the browser window and choose the &#34;New Repository&#34; option.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 242.50px" src="img/1c14c18ae5d98903.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded>Name the Repository</h2>
+<p>Give your repository a logical name.  You&#39;ll end up with many repositories, so organizing them now is a very good idea.</p>
+<p>For this tutorial, we will use the name:</p>
+<p><code>cit41200_gcf_distance_service</code></p>
+<h2 is-upgraded>Review the Created Repository</h2>
+<p>The next GitHub page takes you to your empty repository and walks you through the steps to add content to it.  These steps will be described in the upcoming sections of this tutorial.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>Keep this tab open so that you can copy the instructions later.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Create a project directory within Cloud Shell, then enter it" duration="0">
+        <p>It is a very good practice to keep the code for each individual Cloud Function in its own directory on your working machine. In this case, your working machine is your Cloud Shell.</p>
+<h2 is-upgraded>Create the Directory</h2>
+<p><strong>Navigate to the home directory for this course.</strong></p>
+<p>Then use the linux commands to make a directory for this Cloud Function&#39;s code and navigate into it.</p>
+<p><code>mkdir distance_service &amp;&amp; cd distance_service</code></p>
+<aside class="special"><p><strong>Pro Tip: </strong>Keep this tab open so that you can copy the instructions later.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Create a new Node.js Package" duration="0">
+        <p>Your application logic is written in JavaScript and is delivered as a Node.js package.  You&#39;ll need to ensure you are using a compatible version of Node.js, install a compatible version if needed, and then create a new Node.js package.</p>
+<h2 is-upgraded>Verify Node.js Version</h2>
+<p>GCF expects a Node.js runtime version of 12 or 16.  We will use <strong>Node.js v 16.13.2</strong> for this tutorial.</p>
+<pre><code>node -v</code></pre>
+<p>If the Node version is anything other than 16, use <strong>Node Version Manager</strong> (nvm) to install the correct version.</p>
+<pre><code>nvm install 16.13.2</code></pre>
+<p>You should see a message that you are currently using Node.js 16.13.2.</p>
+<h2 is-upgraded>Initialize a new Node Package</h2>
+<p>You will now use the <strong>Node Package Manager</strong> (npm) to create a new Node.js package.</p>
+<pre><code>npm init</code></pre>
+<p>Proceed through the dialog to input any values you understand.  If the default value (the value that appears in parenthesis) is acceptable, you can simply press <strong><code>Enter</code></strong>.</p>
+<aside class="special"><p><strong>Pro Tip: </strong>For a speedy setup, initialize the package with all default values by typing<br><code>npm init --yes</code></p>
+</aside>
+<p>At the end of this configuration, you will have created a <code>package.json</code> file that contains the <strong>manifest</strong> for your Node.js package.</p>
+<h2 is-upgraded>Create Your Code File</h2>
+<p>The <code>package.json</code> file contains configuration information for your Node.js package.  It does not, however contain any functional logic.  By default, your logic should be stored in an <code>index.js</code> file.</p>
+<p>To create this file, use the following Unix command:</p>
+<pre><code>touch index.js</code></pre>
+<h2 is-upgraded>Create a README File</h2>
+<p>You should create a README file at the root level of your site.  The contents of this file are what will display on the GitHub repository&#39;s home page.</p>
+<p>This is a great place to make notes to yourself and collaborators: link to resources, explain different versions, etc.</p>
+<p>To create this file, use the following Unix command:</p>
+<pre><code>touch README.md</code></pre>
+<p><br>At a minimum, edit the README file to add a title and a basic description of the project.</p>
+<h2 is-upgraded>Create a .gitignore File</h2>
+<p>Create a <code>.gitignore</code> file to ensure that you only upload necessary files to your GitHub repository.</p>
+<p>To create this file, use the following Unix command:</p>
+<pre><code>touch .gitignore</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>You can combine multiple touch commands on one line, like so: <code>touch index.js README.md .gitignore</code></p>
+</aside>
+<p><br>Edit your <code>.gitignore</code> and add the following line:</p>
+<pre><code>node_modules</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Create and Connect Your Local Git Repository" duration="0">
+        <p>With your files created, you should create your local Git repository and then connect it to your two remote repositories (GitHub.IU and Google Cloud Source Repositories.)</p>
+<pre><code>git init
+git add .
+git commit -m &#34;Initial Commit&#34;</code></pre>
+<h2 is-upgraded>Connect to Your Remote GitHub.IU Repository</h2>
+<p>You will add a remote nicknamed <strong>origin</strong> that will connect your local repository to your repository on GitHub.IU.</p>
+<aside class="warning"><p><strong>Important Note: </strong>You will need the full https:// address to your GitHub.IU repository for this step.  Replace the repository name in the code below.</p>
+</aside>
+<pre><code>git remote add origin https://github.iu.edu/USERNAME/REPOSITORY_NAME.git</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>The setup string that you need for this step is provided by GitHub.IU on the default landing page for the empty repository.</p>
+</aside>
+<p>You are now able to push code from your local repository to GitHub.IU.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Write Your Code" duration="0">
+        <p>From the toolbar in the Cloud Shell window, you can open the browser-based <strong>Code Editor</strong>.</p>
+<p>This will allow you to edit your code files in a web-based text editor.</p>
+<p>With your <code>index.js</code> file loaded in the editor, input the following code:</p>
+<pre><code>exports.convertDistance = (req, res) =&gt; {
+  let unit = req.body.unit || req.query.unit;
+  let value = req.body.value || req.query.value;
+  var returnValue;
+  if (unit == &#34;miles&#34;) {
+      returnValue = milesToKM(value);
+  }
+  res.status(200).send(returnValue.toString());
+}
+
+// HELPER FUNCTIONS
+const milesToKM = miles =&gt; miles * 1.60934;</code></pre>
+<p>Choose Save from the File menu.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6: Deploy Your Google Cloud Function" duration="0">
+        <p>From the command line, issue the command to create a new Google Cloud Function. Note that the backslashes (&#34;\&#34;) just allow a single Linux command to be wrapped over multiple lines.</p>
+<pre><code>gcloud functions deploy distance_service \
+--entry-point convertDistance \
+--runtime nodejs16 \
+--trigger-http \
+--allow-unauthenticated</code></pre>
+<aside class="warning"><p><strong>Important Note: </strong>If you receive an error when deploying the cloud function, go to the Cloud Console, enter the Cloud Functions overview, click on the name of your Cloud Function (&#34;distance_service&#34; in this example) and click on the &#34;Logs&#34; tab. Review the log statements to help you determine why the function could not be deployed. Then repeat steps 5 &amp; 6.</p>
+</aside>
+<aside class="special"><p><strong>Pro Tip: </strong>After you have deployed your cloud function for the first time, you can redeploy it with just the primary <code>deploy</code> command: <code>gcloud functions deploy distance_service</code></p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7: Test Your Cloud Function" duration="0">
+        <p>Because this is an HTTP-triggered cloud function, you can test it by visiting the public URL available in the Cloud Console.</p>
+<ol type="1" start="1">
+<li>Go to <a href="https://console.cloud.google.com/" target="_blank">console.cloud.google.com</a></li>
+<li>Choose Cloud Functions from the navigation</li>
+<li>Click the name of your cloud function (&#34;distance_service&#34;)</li>
+<li>Click the Trigger tab</li>
+<li>Copy the Trigger URL</li>
+<li><strong>Note:</strong> This cloud function expects input from the request. You will need to provide the expected values in the querystring in order to properly execute the cloud function.</li>
+<li>Paste the Trigger URL and a properly-formatted querystring into the browser to see the result of the function</li>
+</ol>
+<p>For example, here is a sample cloud function URL with a querystring: <a href="https://us-central1-sp21-41200-elliott-demo.cloudfunctions.net/distance-service?unit=miles&value=10" target="_blank">https://us-central1-sp21-41200-elliott-demo.cloudfunctions.net/distance-service?unit=miles&amp;value=10</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 8: Commit Your Code &amp; Update the Node Package Version" duration="0">
+        <p>Once you have made a sufficient number of changes to your code, you can make a Git commit and store your current code version.</p>
+<h2 is-upgraded>Create a Git commit</h2>
+<pre><code>git add .
+git commit -m &#34;YOUR MESSAGE HERE&#34;</code></pre>
+<h2 is-upgraded>Update the Node.JS package version</h2>
+<pre><code>npm version minor</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>Versions are noted in the following order:  <strong>MAJOR.MINOR.PATCH</strong>  When updating your version, you must note what level of changes were made.</p>
+<ul>
+<li><strong>MAJOR</strong> is for large overhauls of existing functionality or interfaces.  (<em>Example: Word 2012 to Word 2016 is a major update.)</em></li>
+<li><strong>MINOR</strong> is for the addition of new functionality to the existing application.<br></li>
+<li><strong>PATCH</strong> is for bug fixes or very minor tweaks.</li>
+</ul>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 9: Push Your Code to Your Remote Repository" duration="0">
+        <p>Now you must push your code to your remote repository. You may push to your GitHub.IU as often as you&#39;d like to keep your backup intact.</p>
+<h2 is-upgraded>Push to GitHub.IU</h2>
+<p>Your GitHub repository is nicknamed <strong>origin</strong>.  You need to push the master branch of your local Git repository there.</p>
+<pre><code>git push -u origin master</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
