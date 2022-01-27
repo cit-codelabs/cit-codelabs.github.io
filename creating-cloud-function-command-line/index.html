@@ -105,8 +105,6 @@
 <p><strong>Navigate to the home directory for this course.</strong></p>
 <p>Then use the linux commands to make a directory for this Cloud Function&#39;s code and navigate into it.</p>
 <p><code>mkdir distance_service &amp;&amp; cd distance_service</code></p>
-<aside class="special"><p><strong>Pro Tip: </strong>Keep this tab open so that you can copy the instructions later.</p>
-</aside>
 
 
       </google-codelab-step>
@@ -142,7 +140,7 @@
 <pre><code>touch .gitignore</code></pre>
 <aside class="special"><p><strong>Pro Tip: </strong>You can combine multiple touch commands on one line, like so: <code>touch index.js README.md .gitignore</code></p>
 </aside>
-<p><br>Edit your <code>.gitignore</code> and add the following line:</p>
+<p>Edit your <code>.gitignore</code> and add the following line:</p>
 <pre><code>node_modules</code></pre>
 
 
@@ -181,13 +179,13 @@ git commit -m &#34;Initial Commit&#34;</code></pre>
 
 // HELPER FUNCTIONS
 const milesToKM = miles =&gt; miles * 1.60934;</code></pre>
-<p>Choose Save from the File menu.</p>
+<p>Although the Cloud Shell Editor saves automatically, you can choose Save from the File menu.</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Step 6: Deploy Your Google Cloud Function" duration="0">
-        <p>From the command line, issue the command to create a new Google Cloud Function. Note that the backslashes (&#34;\&#34;) just allow a single Linux command to be wrapped over multiple lines.</p>
+        <p>From the command line, issue the command to create and deploy a new Google Cloud Function. Note that the backslashes (&#34;\&#34;) just allow a single Linux command to be wrapped over multiple lines.</p>
 <pre><code>gcloud functions deploy distance_service \
 --entry-point convertDistance \
 --runtime nodejs16 \
@@ -203,8 +201,8 @@ const milesToKM = miles =&gt; miles * 1.60934;</code></pre>
     
       <google-codelab-step label="Step 7: Test Your Cloud Function" duration="0">
         <p>Because this is an HTTP-triggered cloud function, you can test it by visiting the public URL available in the Cloud Console.</p>
+<p><a href="https://console.cloud.google.com/" target="_blank"><paper-button class="colored" raised>Open the GCP Cloud Console</paper-button></a></p>
 <ol type="1" start="1">
-<li>Go to <a href="https://console.cloud.google.com/" target="_blank">console.cloud.google.com</a></li>
 <li>Choose Cloud Functions from the navigation</li>
 <li>Click the name of your cloud function (&#34;distance_service&#34;)</li>
 <li>Click the Trigger tab</li>
@@ -236,10 +234,12 @@ git commit -m &#34;YOUR MESSAGE HERE&#34;</code></pre>
       </google-codelab-step>
     
       <google-codelab-step label="Step 9: Push Your Code to Your Remote Repository" duration="0">
-        <p>Now you must push your code to your remote repository. You may push to your GitHub.IU as often as you&#39;d like to keep your backup intact.</p>
+        <p>Now you should push your code to your remote repository so that you have a backup of it. You may push to your GitHub.IU as often as you&#39;d like to keep your backup intact.</p>
 <h2 is-upgraded>Push to GitHub.IU</h2>
 <p>Your GitHub repository is nicknamed <strong>origin</strong>.  You need to push the master branch of your local Git repository there.</p>
 <pre><code>git push -u origin master</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>If you have multiple branches, you can push them all at once with the following command: <code>git push -u origin --all</code></p>
+</aside>
 
 
       </google-codelab-step>
