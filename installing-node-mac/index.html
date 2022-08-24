@@ -1,0 +1,93 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Creating an Express Website</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="installing-node-mac"
+                  title="Creating an Express Website"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This installation guide will walk you through the process of installing Node.js on your personal Mac computer.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/6f8630d0dac1826a.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What&#39;s Node.js?</strong></h2>
+<p>Node.js is a JavaScript <em>runtime</em> that will allow your computer to execute JavaScript code similar to a web browser.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Install nvm" duration="0">
+        <p>There are several different versions of Node.js, so they have developed software to help you obtain and switch between versions (which is helpful if you are working on multiple projects). That software is called <em>nvm</em> (Node.js Version Manager). Install that now.</p>
+<p>Open a new Terminal window on your Mac and copy/paste the following command. If you are prompted for an administrator password, enter it.</p>
+<p><em>(Copy and paste this entire line - it is word-wrapping in the documentation, but it is a single command.)</em></p>
+<pre><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</code></pre>
+<p><strong>Quit and restart your Terminal after the installation.</strong></p>
+<p>If your code doesn&#39;t run or you see an error message, follow the <a href="https://github.com/nvm-sh/nvm#troubleshooting-on-macos" target="_blank">troubleshooting steps listed here.</a></p>
+<h2 is-upgraded>Verify installation</h2>
+<p>Ensure that nvm was installed by entering the command:</p>
+<pre><code>command -v nvm</code></pre>
+<p>This should return the message &#34;nvm&#34;. If nothing is returned, quit and restart the Terminal.</p>
+<p>If that does not fix the issue, run the <em>curl</em> command again, quit your Terminal, and restart it.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Install Node.js" duration="0">
+        <p>You will now use nvm to install the current stable LTS (&#34;long term support&#34;) release of Node.js. Input the following command:</p>
+<pre><code>nvm install --lts</code></pre>
+<h2 is-upgraded>Check Node.js version</h2>
+<p>Verify the version of Node.js that was installed. Run the following command:</p>
+<pre><code>node –-version</code></pre>
+<p>You should receive a message that &#34;v16.17.0&#34; (or a higher number) is installed.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Install Visual Studio Code" duration="0">
+        <p>If you have not already, <a href="https://code.visualstudio.com/download" target="_blank">download and install Visual Studio Code</a>. Choose the correct version for your MacOS and chipset.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Add Visual Studio Code to the PATH" duration="0">
+        <p>You will now allow Visual Studio Code to create a shortcut for launching and loading files in the editor.</p>
+<p>Launch Visual Studio Code.</p>
+<p>Inside the application, open the Command Palette (Command+Shift+P)</p>
+<p>Choose the option <strong>Shell Command: Install ‘code&#39; command in PATH</strong> and proceed through the dialogs, giving permissions where necessary</p>
+<p><strong>Once this is done, you are finished and ready to continue with our class exercises.</strong></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

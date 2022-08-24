@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2022-08-23T19:28:49Z",
+  "id": "installing-node-mac",
+  "duration": 0,
+  "title": "Creating an Express Website",
+  "authors": "elliott",
+  "summary": "In this tutorial you'll learn how to install Node.js and the npm package manager on a Mac machine",
+  "source": "1BgmuRHJ7VlWpe7DZlGtDRx_pAQ2qgVM4N8v9OmwsPls",
+  "theme": "web-node",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "web-node"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "installing-node-mac"
+}
