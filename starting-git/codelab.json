@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-02-17T15:30:19Z",
+  "updated": "2022-08-23T15:03:01Z",
   "id": "starting-git",
   "duration": 0,
   "title": "Getting Started with Git",
@@ -15,7 +15,7 @@
     "published"
   ],
   "category": [
-    "Git"
+    "git"
   ],
   "tags": [
     "web"

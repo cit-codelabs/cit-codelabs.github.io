@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2022-08-24T18:40:41Z",
+  "id": "installing-node-windows",
+  "duration": 0,
+  "title": "Installing Node.js for Development on Windows",
+  "authors": "elliott",
+  "summary": "In this tutorial you'll learn how to install Node.js and the npm package manager on a Windows machine",
+  "source": "1drHjKL3-cQBEeAJO8oaUw8FQTS5O2dYVSlMSLi1XYps",
+  "theme": "web-node",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "web-node"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "installing-node-windows"
+}

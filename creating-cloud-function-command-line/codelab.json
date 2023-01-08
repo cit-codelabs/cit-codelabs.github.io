@@ -3,10 +3,10 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2022-01-27T15:44:49Z",
+  "updated": "2023-01-08T19:38:35Z",
   "id": "creating-cloud-function-command-line",
   "duration": 0,
-  "title": "Creating a Google Cloud Function",
+  "title": "Creating a JS Google Cloud Function from the Command Line",
   "authors": "elliott",
   "summary": "In this tutorial you'll learn how to properly create and deploy a Google Cloud Function within the Google Cloud Shell",
   "source": "1bPZOOk-kJTxxWpFyOkuo75g4qKzoHP_p7qagHhPjf4w",
@@ -15,7 +15,7 @@
     "published"
   ],
   "category": [
-    "GCP"
+    "gcp"
   ],
   "tags": [
     "web"

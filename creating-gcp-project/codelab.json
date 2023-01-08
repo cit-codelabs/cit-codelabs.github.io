@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-17T16:49:39Z",
+  "updated": "2020-09-17T16:49:45Z",
   "id": "creating-gcp-project",
   "duration": 0,
   "title": "Creating a GCP Project",
@@ -15,7 +15,7 @@
     "published"
   ],
   "category": [
-    "GCP"
+    "gcp"
   ],
   "tags": [
     "web"

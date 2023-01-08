@@ -1,0 +1,128 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Installing Node.js for Development on Windows</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="installing-node-windows"
+                  title="Installing Node.js for Development on Windows"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This installation guide will walk you through the process of installing Node.js on your personal Windows computer.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/6f8630d0dac1826a.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What&#39;s Node.js?</strong></h2>
+<p>Node.js is a JavaScript <em>runtime</em> that will allow your computer to execute JavaScript code similar to a web browser.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Install the Windows Subsystem for Linux" duration="0">
+        <p>You will install a version of Linux that will run along your Windows operating system for development purposes. <a href="https://docs.microsoft.com/en-us/windows/wsl/install" target="_blank">Detailed instructions can be found here.</a></p>
+<p>From the command prompt, where you are running as an administrator, type the following:</p>
+<pre><code>wsl --install -d Ubuntu</code></pre>
+<p>You will install the Ubuntu distribution of Linux by default. This is the correct version to use.</p>
+<aside class="special"><p><strong>Important Notes: <br></strong></p>
+<ul>
+<li>You must have administrator rights on your computer. <a href="https://grok.lsu.edu/article.aspx?articleid=18026&printable=y" target="_blank">You can learn how to do that here.</a></li>
+<li>You MUST restart your machine once the installation is complete!</li>
+</ul>
+</aside>
+<h2 is-upgraded>Upgrade to Windows Subsystem for Linux 2 (WSL2)</h2>
+<p>From the Windows command prompt, update your Ubuntu installation to take advantage of WSL 2. Input this command into the WINDOWS command prompt:</p>
+<pre><code>wsl --set-version Ubuntu 2</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Run &amp; update your Linux distribution" duration="0">
+        <p>Once your computer has restarted, you can find &#34;Ubuntu&#34; installed as an app in your Start menu. Launch Ubuntu and allow it to finish its installation.</p>
+<h2 is-upgraded>Create a username and password</h2>
+<p>You will be asked to create a username and password for the administrator of this operating system. These DO NOT need to be the same as the username/password for your Windows OS.</p>
+<h2 is-upgraded>Update Ubuntu</h2>
+<p>The first thing you should do is ask Ubuntu to install any updates. From the<strong> Ubuntu command prompt</strong>, type the following:</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+<p>You will be asked to input the password you just created.</p>
+<p><em>(This will probably take a while.)</em></p>
+<aside class="special"><p><strong>Pro Tips: </strong><em>sudo</em> is Linux-speak for &#34;super user do&#34; – it basically means that this command should be run as an administrator (which is why you have to enter your password).</p>
+<p>You&#39;re running two commands in one statement here: <em>apt</em> is a utility to manage Linux packages and you are asking it to both update and upgrade your installation. The &#34;&amp;&amp;&#34; symbol means to run two commands at once.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Install Node.js and npm" duration="0">
+        <h2 is-upgraded>Uninstall outdated files</h2>
+<p>Node.js is sometimes automatically included with the Ubuntu distribution. Unfortunately, the version that is installed is outdated. So the first thing we have to do now is uninstall the old version.</p>
+<p>This is done in two steps: <em>purge</em>, which uninstalls Node.js, and <em>auto-remove</em> which removes any leftover files that no other software needs (now that Node.js has been uninstalled).</p>
+<p>Run the following command in the Ubuntu command line window:</p>
+<pre><code>sudo apt-get purge --auto-remove nodejs</code></pre>
+<h2 is-upgraded>Install support software</h2>
+<p>To install software from the internet, Linux needs to be able to resolve web addresses (URLs). It can do that with a tool called <em>cURL</em>. Install that now by typing this into the Ubuntu command line window:</p>
+<pre><code>sudo apt-get install curl</code></pre>
+<p>There are several different versions of Node.js, so they have developed software to help you obtain and switch between versions (which is helpful if you are working on multiple projects). That software is called <em>nvm</em> (Node.js Version Manager). Install that now.</p>
+<p><em>(Copy and paste this entire line - it is word-wrapping in the documentation, but it is a single command.)</em></p>
+<pre><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</code></pre>
+<p><strong>CLOSE and restart your Ubuntu application!</strong></p>
+<h2 is-upgraded>Verify installation</h2>
+<p>Restart Ubuntu by finding it in the Start menu.</p>
+<p>Ensure that nvm was installed by entering the command:</p>
+<pre><code>command -v nvm</code></pre>
+<p>This should return the message &#34;nvm&#34;.</p>
+<h2 is-upgraded>Install Node.js</h2>
+<p>You will now use nvm to install the current stable LTS (&#34;long term support&#34;) release of Node.js. Input the following command:</p>
+<pre><code>nvm install --lts</code></pre>
+<h2 is-upgraded>Check Node.js version</h2>
+<p>Verify the version of Node.js that was installed. Run the following command:</p>
+<pre><code>node –-version</code></pre>
+<p>You should receive a message that &#34;v16.17.0&#34; (or a higher number) is installed.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Install Visual Studio Code" duration="0">
+        <p>If you have not already, <a href="https://code.visualstudio.com/download" target="_blank">download and install Visual Studio Code</a>. Choose the correct version for your Windows version and chipset.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Install the VS Code Remote - WSL Extension" duration="0">
+        <p>Visual Studio code allows you to install a number of extensions that will speed up your development. The <strong>Remote - WSL</strong> extension will allow you to work with your Ubuntu server while simultaneously editing your files.</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" target="_blank">Visit the Remote - WSL page and click the green Install button.</a></p>
+<p><strong>Once this is done, you are finished and ready to continue with our class exercises.</strong></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

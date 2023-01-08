@@ -1,0 +1,153 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Creating a Python Development Environment</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="create-python-dev-environment"
+                  title="Creating a Python Development Environment"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This is a step-by-step review of the process of creating a new Python website that uses Flask for backend functionality.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/6f8630d0dac1826a.png"></p>
+</td></tr>
+</table>
+<h2 is-upgraded><strong>What Technologies Are We Using?</strong></h2>
+<ul>
+<li>Python 3</li>
+<li>Flask</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Install Software on Your Local Machine" duration="0">
+        <p>Follow the instructions below based on your platform.</p>
+<p><a href="https://cloud.google.com/python/docs/setup" target="_blank">Google has a very good overview of these instructions.</a></p>
+<h2 is-upgraded>Installation on a Mac</h2>
+<p>Open the Terminal on a Mac and then install Homebrew. Homebrew is a package manager for open source software on Mac computers.</p>
+<pre><code>/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&#34;</code></pre>
+<p>If Homebrew is already installed, update it:</p>
+<pre><code>brew update</code></pre>
+<p>Install Python:</p>
+<pre><code>brew install python</code></pre>
+<aside class="warning"><p><strong>Move Into Your Preferred Directory! </strong>Navigate to the directory where you would like the files for your local environment to be installed.</p>
+</aside>
+<p>Create your virtual environment. Conceptually, you&#39;ll want to create a virtual environment for every separate Python project. In the example below, my environment is named <strong>37400_python_api</strong>.</p>
+<pre><code>python3 -m venv 37400_python_api</code></pre>
+<p>Start your virtual environment:</p>
+<pre><code>source 37400_python_api/bin/activate</code></pre>
+<p>You should see your virtual environment name appear <em>before</em> your command prompt.</p>
+<h2 is-upgraded>Installation on Windows</h2>
+<p><strong>First</strong> install the latest version of Python for Windows from the <a href="https://www.python.org/downloads/windows/" target="_blank">Python website</a>.</p>
+<aside class="warning"><p><strong>Move Into Your Preferred Directory! </strong>Navigate to the directory where you would like the files for your local environment to be installed.</p>
+</aside>
+<p>Create your virtual environment. Conceptually, you&#39;d want to create a virtual environment for every separate Python project. In the example below, my environment is named <strong>37400_python_api</strong>.</p>
+<pre><code>py -m venv 37400_python_api</code></pre>
+<p>Start your virtual environment:</p>
+<pre><code>.\env\Scripts\activate</code></pre>
+<p>You should see your virtual environment name appear <em>before</em> your command prompt.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Install Python Packages" duration="0">
+        <p>With your virtual environment running, update <code>pip</code> - the Python package manager:</p>
+<pre><code>pip install --upgrade pip</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Create a Python File" duration="0">
+        <p>You will create a file that will host a simple Python web site.</p>
+<p>First, create a new directory that will hold your website&#39;s files and then move into it.</p>
+<pre><code>mkdir api
+cd api</code></pre>
+<p>Using your favorite code editor, create two files in the <code>api</code> folder:</p>
+<ul>
+<li>main.py</li>
+<li>requirements.txt</li>
+</ul>
+<p>Add the following code to <code>main.py</code></p>
+<pre><code>from flask import Flask
+
+app = Flask(__name__)
+app.config[&#34;DEBUG&#34;] = True
+
+
+@app.route(&#39;/&#39;, methods=[&#39;GET&#39;])
+def home():
+    return &#34;&lt;h1&gt;Sample Python Page&lt;/h1&gt;&lt;p&gt;This is an HTML page served by Python.&lt;/p&gt;&#34;
+
+if __name__ == &#39;__main__&#39;:
+    # This is used when running locally only.
+    app.run(host=&#39;127.0.0.1&#39;, port=8080, debug=True)
+</code></pre>
+<p>Add the following code to <code>requirements.txt</code></p>
+<pre><code>Flask==2.0.1</code></pre>
+<p>From the command line, add the packages listed in <code>requirements.txt</code> to your virtual environment.</p>
+<pre><code>pip install -r requirements.txt</code></pre>
+<p>Instruct Python to run your app.</p>
+<p><strong>Mac:</strong></p>
+<pre><code>python3 main.py</code></pre>
+<p><strong>Windows:</strong></p>
+<pre><code>py main.py</code></pre>
+<p>Your page is now being served at <a href="http://127.0.0.1:8080/" target="_blank">http://127.0.0.1:8080/</a> on your local machine.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Create a Git Repository" duration="0">
+        <p>Ensure that Git is installed on your local machine.</p>
+<p>Then, run the following series of commands to create a local Git repository.</p>
+<pre><code>git init
+git add .
+git commit -m &#34;Initial Commit&#34;</code></pre>
+<p>You will also want to create a remote repository and push your local files to it.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Git Example" duration="0">
+        <p><a href="https://github.iu.edu/cit37400-dev/python-api-setup/tree/v.1" target="_blank">A sample remote repository for this application can be found here.</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Go Code!" duration="0">
+        <p>You now have a basic Python / Flask site set up.  Go do something cool with it.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

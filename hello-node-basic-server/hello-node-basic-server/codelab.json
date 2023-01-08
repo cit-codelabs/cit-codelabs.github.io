@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-01-08T19:32:11Z",
+  "id": "hello-node-basic-server",
+  "duration": 0,
+  "title": "Hello Node Basic Node.js Server",
+  "authors": "elliott",
+  "summary": "In this tutorial you'll create a very basic Node.js server and launch it using the Node.js runtime you installed on your computer. You will then be able to view the page that is generated in your local browser.",
+  "source": "1yy7XMkjk3GTEVodncp8vkRwmjkHcBryfLaqQVomznG4",
+  "theme": "web-node",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "web-node"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "hello-node-basic-server"
+}

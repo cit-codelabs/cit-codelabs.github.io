@@ -1,0 +1,133 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Hello Node Basic Node.js Server</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-133580637-1"
+                  id="hello-node-basic-server"
+                  title="Hello Node Basic Node.js Server"
+                  environment="web"
+                  feedback-link="mailto:elliott@iupui.edu">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>This tutorial will walk you through the process of creating and running a very basic Node.js server that produces a response when called in a web browser.</p>
+<p>Ensure you have followed the tutorial to install Node.js on either your Windows or your Mac machine before starting.</p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/6f8630d0dac1826a.png"></p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Open Visual Studio Code" duration="0">
+        <p>VS Code allows you to create and edit the files needed for your web applications and includes a built-in terminal that allows you to execute the commands needed to run your Node.js server.</p>
+<p>Open Visual Studio code.</p>
+<p>Under the Terminal menu, select <strong>New Terminal</strong>.</p>
+<p>You will see the command prompt of the Linux operating system. The Terminal is where you will execute commands.</p>
+<p>In the Terminal, use the <strong>cd</strong> and <strong>ls</strong> commands to navigate to the directory where you will store your project files. You will create a new top-level directory for each project in this course.</p>
+<p>Create a new top level directory for our <strong>hello-node</strong> project and move into that directory.</p>
+<pre><code>mkdir hello-node &amp;&amp; cd hello-node</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 2: Create a Node.js File" duration="0">
+        <p>You will now create a new file from the Linux command prompt and open it for editing in Visual Studio Code.</p>
+<p>Ensure that you are in the directory for our <strong>hello-node</strong> project and enter the following into the Terminal:</p>
+<pre><code>code hellonode.js -r</code></pre>
+<p>(Note: the <em>-r</em> may not be necessary on Windows machines, but it will not hurt anything.)</p>
+<p>You should now see an empty text file in the Visual Studio Code editor. <strong>Save the file</strong> (with no content).</p>
+<p>Verify that you see the file you just created in the Terminal by typing the following command:</p>
+<pre><code>ls</code></pre>
+<p>You should see a single file in this directory named <em>hellonode.js</em><strong>.</strong></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Add Contents to the File" duration="0">
+        <p>We will now create a JavaScript file that contains the specifications for a Node.js server. Copy and paste all of the code below into the <strong>hellonode.js</strong> file. Then, save the file.</p>
+<pre><code>//Load HTTP module
+const http = require(&#34;http&#34;);
+
+//Set the IP address and port for this server
+const hostname = &#39;127.0.0.1&#39;;
+const port = 3000;
+
+//Create HTTP server and listen on port 3000 for requests
+const server = http.createServer((req, res) =&gt; {
+  //Set the response HTTP header with HTTP status and Content type
+  res.statusCode = 200;
+  res.setHeader(&#39;Content-Type&#39;, &#39;text/plain&#39;);
+  res.end(&#39;Hello World\n&#39;);
+});
+
+//Have the server listen for requests and create a callback function that returns the IP address and port in the server console
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 4: Run Your Node.js Application" duration="0">
+        <p>With your file saved, go to the command line in the Terminal window and type the following command to start your web server:</p>
+<pre><code>node hellonode.js</code></pre>
+<p>You should see a message in the server console (your Terminal window) that reports the server is running and includes an IP address and port.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Make a Request of Your Web Application" duration="0">
+        <p>You now have a server that is running and waiting for requests. You can make a request of your server by going to a new browser window <strong>on the same computer</strong> and visit the URL: <a href="http://127.0.0.1:3000" target="_blank">http://127.0.0.1:3000</a> </p>
+<p>This is the IP address and port number that is listening for requests, which you set in your code.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 6: Update Your Response" duration="0">
+        <p>Currently your web server responds with a ‘Hello World&#39; message. Update the <strong>hellonode.js</strong> file to return a different message of your choosing. Save the file.</p>
+<p>Return to the web browser and refresh the page. Did your message change? Why not?</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7: Restart Your Web Application" duration="0">
+        <p>Node.js serves the same code consistently until it is restarted. This prevents inadvertent changes to the application files while the server is up and running. This is also why your message did not change.</p>
+<p>In the Terminal in Visual Studio Code, stop your Node.js application by pressing Control-C (which works on both Mac and Windows).</p>
+<p>Then, restart your application by typing </p>
+<pre><code>node hellonode.js</code></pre>
+<p>Return to your web browser and refresh the page. You will now see your new message returned to the browser.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

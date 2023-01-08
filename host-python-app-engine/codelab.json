@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2021-10-20T12:02:37Z",
+  "updated": "2021-10-20T12:02:46Z",
   "id": "host-python-app-engine",
   "duration": 0,
   "title": "Host a Python Website on App Engine",
@@ -15,7 +15,7 @@
     "published"
   ],
   "category": [
-    "GCP"
+    "gcp"
   ],
   "tags": [
     "web"
