@@ -112,11 +112,11 @@
       <google-codelab-step label="Step 3: Create a new Node.js Package" duration="0">
         <p>Your application logic is written in JavaScript and is delivered as a Node.js package.  You&#39;ll need to ensure you are using a compatible version of Node.js, install a compatible version if needed, and then create a new Node.js package.</p>
 <h2 is-upgraded>Verify Node.js Version</h2>
-<p>GCF expects a Node.js runtime version of 12 or 16.  We will use <strong>Node.js v 16.13.2</strong> for this tutorial.</p>
+<p>GCF expects a Node.js runtime version of 12 or 16.  We will use <strong>Node.js v 18.13.0</strong> for this tutorial.</p>
 <pre><code>node -v</code></pre>
-<p>If the Node version is anything other than 16, use <strong>Node Version Manager</strong> (nvm) to install the correct version.</p>
-<pre><code>nvm install 16.13.2</code></pre>
-<p>You should see a message that you are currently using Node.js 16.13.2.</p>
+<p>If the Node version is anything other than 18, use <strong>Node Version Manager</strong> (nvm) to install the correct version.</p>
+<pre><code>nvm install --lts</code></pre>
+<p>You should see a message that you are currently using Node.js 18.13.0.</p>
 <h2 is-upgraded>Initialize a new Node Package</h2>
 <p>You will now use the <strong>Node Package Manager</strong> (npm) to create a new Node.js package.</p>
 <pre><code>npm init</code></pre>
@@ -125,7 +125,7 @@
 </aside>
 <p>At the end of this configuration, you will have created a <code>package.json</code> file that contains the <strong>manifest</strong> for your Node.js package.</p>
 <h2 is-upgraded>Create Your Code File</h2>
-<p>The <code>package.json</code> file contains configuration information for your Node.js package.  It does not, however contain any functional logic.  By default, your logic should be stored in an <code>index.js</code> file.</p>
+<p>The <code>package.json</code> file contains configuration information for your Node.js package.  It does not, however, contain any functional logic.  By default, your logic should be stored in an <code>index.js</code> file.</p>
 <p>To create this file, use the following Unix command:</p>
 <pre><code>touch index.js</code></pre>
 <h2 is-upgraded>Create a README File</h2>
@@ -153,7 +153,8 @@ git add .
 git commit -m &#34;Initial Commit&#34;</code></pre>
 <h2 is-upgraded>Connect to Your Remote GitHub.IU Repository</h2>
 <p>You will add a remote nicknamed <strong>origin</strong> that will connect your local repository to your repository on GitHub.IU.</p>
-<aside class="warning"><p><strong>Important Note: </strong>You will need the full https:// address to your GitHub.IU repository for this step.  Replace the repository name in the code below.</p>
+<aside class="warning"><p><strong>Important Note:</strong> If you are connecting to GitHub.IU with your username/passphrase, you will need the full https:// address to your GitHub.IU repository for this step.  Replace the repository name in the code below.</p>
+<p>If you have set up an SSH connection between Cloud Shell and GitHub.IU, use the SSH address to your repository.</p>
 </aside>
 <pre><code>git remote add origin https://github.iu.edu/USERNAME/REPOSITORY_NAME.git</code></pre>
 <aside class="special"><p><strong>Pro Tip: </strong>The setup string that you need for this step is provided by GitHub.IU on the default landing page for the empty repository.</p>
@@ -188,7 +189,7 @@ const milesToKM = miles =&gt; miles * 1.60934;</code></pre>
         <p>From the command line, issue the command to create and deploy a new Google Cloud Function. Note that the backslashes (&#34;\&#34;) just allow a single Linux command to be wrapped over multiple lines.</p>
 <pre><code>gcloud functions deploy distance_service \
 --entry-point convertDistance \
---runtime nodejs16 \
+--runtime nodejs18 \
 --trigger-http \
 --allow-unauthenticated</code></pre>
 <aside class="warning"><p><strong>Important Note: </strong>If you receive an error when deploying the cloud function, go to the Cloud Console, enter the Cloud Functions overview, click on the name of your Cloud Function (&#34;distance_service&#34; in this example) and click on the &#34;Logs&#34; tab. Review the log statements to help you determine why the function could not be deployed. Then repeat steps 5 &amp; 6.</p>
@@ -236,9 +237,9 @@ git commit -m &#34;YOUR MESSAGE HERE&#34;</code></pre>
       <google-codelab-step label="Step 9: Push Your Code to Your Remote Repository" duration="0">
         <p>Now you should push your code to your remote repository so that you have a backup of it. You may push to your GitHub.IU as often as you&#39;d like to keep your backup intact.</p>
 <h2 is-upgraded>Push to GitHub.IU</h2>
-<p>Your GitHub repository is nicknamed <strong>origin</strong>.  You need to push the master branch of your local Git repository there.</p>
-<pre><code>git push -u origin master</code></pre>
-<aside class="special"><p><strong>Pro Tip: </strong>If you have multiple branches, you can push them all at once with the following command: <code>git push -u origin --all</code></p>
+<p>Your GitHub repository is nicknamed <strong>origin</strong>.  You need to push the main branch of your local Git repository there.</p>
+<pre><code>git push origin main</code></pre>
+<aside class="special"><p><strong>Pro Tip: </strong>If you have multiple branches, you can push them all at once with the following command: <code>git push origin --all</code></p>
 </aside>
 
 
