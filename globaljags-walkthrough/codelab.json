@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-03-05T22:14:17Z",
+  "id": "globaljags-walkthrough",
+  "duration": 0,
+  "title": "GlobalJags Walkthrough",
+  "authors": "elliott",
+  "summary": "This codelab provides the steps and code necessary to complete the GlobalJags application.",
+  "source": "1NcICjgVzVp6AheBkoyz60MsKM4wgggoWQc0f6wDH7L4",
+  "theme": "gcp",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "gcp"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "mailto:elliott@iupui.edu",
+  "ga": "UA-133580637-1",
+  "url": "globaljags-walkthrough"
+}
