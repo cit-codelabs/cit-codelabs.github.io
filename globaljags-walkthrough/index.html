@@ -47,7 +47,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 1: Select Your Google Cloud Project" duration="0">
+      <google-codelab-step label="Step 1: Review the Starter Code" duration="0">
         <p>Visit the Google Cloud Platform Console by going to <a href="https://console.cloud.google.com" target="_blank">https://console.cloud.google.com</a>.</p>
 <p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
 <p>From the title bar at the top of the page, view the active project name.  If this is not the correct project, selecting the project name will open the project selection modal window.</p>
@@ -57,65 +57,281 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 2: Enable the Cloud Functions API" duration="0">
-        <h2 is-upgraded>Visit the Cloud Functions Console</h2>
-<p>The Cloud Functions page can be found from the main menu at the top left of any page in the Google Cloud Platform site.</p>
-<p>From the menu, scroll to the <strong>Compute</strong> section and then choose <strong>Cloud Functions</strong>.</p>
-<p class="image-container"><img style="width: 266.50px" src="img/22c8ed0b715af8d8.png"></p>
-<p>Selecting the thumbtack icon to the right of the Cloud Functions menu item will pin the Cloud Functions page to the top of your main menu.</p>
-<p>The first time you visit the Cloud Functions page, the API will be enabled for you.  This might take a few seconds.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Step 3: Create a ‘Hello World&#39; Cloud Function" duration="0">
-        <p>This tutorial will actually walk you through the process of creating two Cloud Functions: one that uses the default code provided by Google Cloud Platform, and a second with custom Python code.</p>
-<p>Choose the <strong>Create Function</strong> button on the page (the location of the button may be different than pictured, based on whether or not this is your first Cloud Function.)</p>
-<p class="image-container"><img style="width: 624.00px" src="img/1ba854d04e78e569.png"></p>
-<h2 is-upgraded>Configure the Cloud Function</h2>
-<p>On the Configuration page, enter the <strong>Function name </strong><code>python-hello-world</code></p>
-<p>From the <strong>Region</strong> dropdown, choose the geographic region that is closest to your location.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/dce33ed32d011acb.png"></p>
-<h2 is-upgraded>Choose a Function Trigger</h2>
-<p>In this tutorial you will create functions that are triggered by HTTP requests.  This means that visitors will be able to invoke your function by visiting a URL in a web browser.  Ensure that <strong>HTTP</strong> is selected in the <strong>Trigger type</strong> dropdown menu.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/332f5c8aece3a86e.png"></p>
-<aside class="warning"><p><strong>Important!</strong>  Ensure that the automatically-generated URL includes your function&#39;s name.  If it does not, change the <strong>Trigger type</strong> selection to a different value and then change it again to <strong>HTTP</strong>.  This should reset the URL to include your function&#39;s name.</p>
+      <google-codelab-step label="Step 2: Configure Google Cloud Resources" duration="0">
+        <h2 is-upgraded>Obtain a Google Maps API Key</h2>
+<p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
+<ol type="1" start="1">
+<li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
+<li>Under <strong>&#34;More Products&#34;</strong> choose <strong>&#34;APIs &amp; Services&#34;</strong></li>
+<li>Click <strong>&#34;Enable APIs and Services&#34;</strong></li>
+<li>Search for or select <strong>&#34;Maps JavaScript API&#34;</strong></li>
+<li>Choose <strong>&#34;Enable&#34;</strong></li>
+<li>Copy the API Key labeled <strong>&#34;Your API Key&#34;</strong></li>
+</ol>
+<h2 is-upgraded>Create GCS Buckets</h2>
+<p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
+<ul>
+<li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
+<li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Storage&#34;</strong> and choose <strong>&#34;Cloud Storage&#34;</strong></li>
+<li>Click <strong>&#34;Create&#34;</strong></li>
+<li>Create THREE buckets that are globally, uniquely named for <em>uploads</em>, <em>thumbnails</em>, and <em>images </em>(see below)</li>
+<li>Leave all other options at their default settings</li>
+<li>Click <strong>&#34;Create&#34;</strong></li>
+</ul>
+<aside class="warning"><p><strong>Important!</strong>  Your bucket names must be completely unique across all GCP users.  One suggestion is to incorporate your username into the bucketname to assist in finding a globally unique name. Examples:</p>
+<ul>
+<li><em>username</em>-globaljags-uploads</li>
+<li><em>username</em>-globaljags-thumbnails</li>
+<li><em>username</em>-globaljags-images</li>
+</ul>
 </aside>
-<h2 is-upgraded>Select Your Authentication Type</h2>
-<p>The functions in this tutorial should be made publicly available so that no authentication is needed during their invocation.  Choose <strong>Allow unauthenticated invocations</strong> from the Authentication menu.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/a330cbc160d301af.png"></p>
-<aside class="special"><p><strong>Free tier functionality!</strong>  You might be concerned about exposing your Cloud Function publicly, but do not panic.  Cloud Functions are not billed until they have run <strong>two million times</strong> in a single month.  Even then, current pricing for Cloud Functions is only USD $0.40 per <em>million</em> executions.</p>
-<p>If you&#39;re interested, you can read more about <a href="https://cloud.google.com/functions/pricing" target="_blank">Cloud Function pricing</a>.</p>
+<h2 is-upgraded>Configure Access to Your GCS Buckets</h2>
+<p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
+<ul>
+<li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
+<li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Storage&#34;</strong> and choose <strong>&#34;Cloud Storage&#34;</strong></li>
+<li>You should see the three buckets you created in the previous step</li>
+<li>You may see additional buckets created by other build processes</li>
+<li>You need to make the assets in your <strong>thumbnails</strong> and <strong>images</strong> buckets public so that they can be viewed over the web</li>
+</ul>
+<p>Complete these steps for EACH bucket:</p>
+<ul>
+<li>Click the &#34;three dot&#34; menu to the right of the bucket&#39;s name</li>
+<li>Click <strong>&#34;Edit access&#34;</strong></li>
+<li>Click <strong>&#34;REMOVE PUBLIC ACCESS PREVENTION&#34;</strong></li>
+<li>A modal window will appear. Click <strong>&#34;CONFIRM&#34;</strong></li>
+<li><strong><em>IMPORTANT: </em></strong><em>Refresh your entire browser tab that shows the list of your Cloud Storage buckets!!</em></li>
+<li>Click the &#34;three dot&#34; menu to the right of the bucket&#39;s name</li>
+<li>Click <strong>&#34;Edit access&#34;</strong></li>
+<li>Click the <strong>&#34;ADD PRINCIPAL&#34;</strong> button</li>
+<li>In the field labeled &#34;New principals&#34; enter <strong>allUsers</strong></li>
+<li>In the &#34;Select a role&#34; dropdown, choose <strong>&#34;Cloud Storage&#34;</strong> and then <strong>&#34;Storage Object Viewer&#34;</strong></li>
+<li>Click <strong>&#34;Save&#34;</strong></li>
+<li>Another modal will appear. Click <strong>&#34;ALLOW PUBLIC ACCESS&#34;</strong></li>
+</ul>
+<h2 is-upgraded>Create a Firestore Database</h2>
+<p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
+<ul>
+<li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
+<li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Databases&#34;</strong> and choose <strong>&#34;Firestore&#34;</strong></li>
+<li>Your database must be in Native mode to send updates to the website. Choose <strong>&#34;Select Native Mode&#34;</strong></li>
+<li>When asked to select a location, choose <strong>&#34;nam5 (United States)&#34;</strong></li>
+</ul>
+<h2 is-upgraded>Create a Firebase Project</h2>
+<p>Visit the <strong>Firebase</strong> Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.firebase.google.com" target="_blank"><paper-button class="colored" raised>Open the Firebase Console</paper-button></a></p>
+<ul>
+<li>Choose <strong>&#34;Add Project&#34;</strong></li>
+<li>In the field labeled &#34;Enter your project name&#34;, select your <em>existing</em> Google Cloud Project</li>
+<li>This will incorporate Firebase functionality into your existing project</li>
+<li>Click <strong>&#34;Continue&#34;</strong></li>
+<li>A modal window will confirm your billing with Google Cloud. Click <strong>&#34;Confirm plan&#34; </strong>and then <strong>&#34;Continue&#34;</strong></li>
+<li>Disable Google Analytics for the project and click <strong>&#34;Add Firebase&#34;</strong></li>
+<li>When your project is ready, click <strong>&#34;Continue&#34;</strong></li>
+<li>In the panel that says &#34;Get started by adding Firebase to your app&#34;, click the <strong>Web icon &lt;/&gt;</strong></li>
+<li>Under &#34;Register app&#34;, provide an app nickname. You can enter <strong>&#34;GlobalJags&#34;</strong></li>
+<li>Click <strong>&#34;Register app&#34;</strong></li>
+<li>Under &#34;Add Firebase SDK&#34;, select <strong>&#34;Use a &lt;script&gt; tag&#34;</strong>. COPY this information and save it for later. You will need it when we write the front end of the website.</li>
+</ul>
+<h2 is-upgraded>Update your Firebase Rules</h2>
+<p>Visit the <strong>Firebase</strong> Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.firebase.google.com" target="_blank"><paper-button class="colored" raised>Open the Firebase Console</paper-button></a></p>
+<ul>
+<li>From the Project Overview screen left-hand navigation, click <strong>&#34;Build&#34;</strong> and then click <strong>&#34;Firestore Database&#34;</strong></li>
+<li>In the top navigation, click <strong>&#34;Rules&#34;</strong></li>
+<li>Update the existing rules so it matches the settings below</li>
+<li>Click <strong>&#34;Publish&#34;</strong></li>
+</ul>
+<p><code>Firestore Database Rules</code></p>
+<pre><code>rules_version = &#39;2&#39;;
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read: if true; 
+      allow write: if false;
+    }
+  }
+}</code></pre>
+<p>This allows your website to read the documents in your database but only your Cloud Function can modify the database.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 3: Write the Code for the Generate Thumbnail Cloud Function" duration="0">
+        <p>In the Google Cloud Shell, navigate to the <code>gcf_generate_thumbnail</code> directory. </p>
+<p>On the command line, install the packages you need to support the Cloud Function:</p>
+<pre>$ npm install npm install @google-cloud/storage path fs-extra os sharp</pre>
+<p>Open the directory in the file editor and then open <code>index.js</code>.</p>
+<h2 is-upgraded>Import Node Packages</h2>
+<p>Import the Node packages required for your function.</p>
+<p><code>globaljags/gcf_generate_thumbnail/index.js</code></p>
+<pre><code>// Import packages
+const {Storage} = require(&#39;@google-cloud/storage&#39;);
+const path = require(&#39;path&#39;);
+const fs = require(&#39;fs-extra&#39;);
+const os = require(&#39;os&#39;);
+const sharp = require(&#39;sharp&#39;);</code></pre>
+<h2 is-upgraded>Deploy the Cloud Function</h2>
+<p>Deploying the Cloud Function allows you to execute and test its logic. To deploy, you MUST know the values for the following variables. Substitute your values in the commands below.</p>
+<ul>
+<li><strong>GCP-PROJECT-NAME </strong><em>This is the name of your Google Cloud Project</em></li>
+<li><strong>GCS-UPLOADS-BUCKET </strong><em>This is the globally unique identifier for the bucket where photos will be uploaded</em></li>
+</ul>
+<h3 is-upgraded>Ensure your Cloud Project is Active</h3>
+<pre>$ gcloud config set project GCP-PROJECT-NAME</pre>
+<p>If asked, click the button to Authorize access to your project from Cloud Shell.</p>
+<h3 is-upgraded>Deploy the Cloud Function</h3>
+<pre>$ gcloud functions deploy generate_thumbnail \
+--entry-point generateThumbnail \
+--runtime nodejs18 \
+--trigger-bucket=GCS-UPLOADS-BUCKET</pre>
+<p>If asked to enable the Cloud Functions and Cloud Build APIs, do so.</p>
+<p>Deploying the function can take up to 3 minutes.</p>
+<aside class="special"><p><strong>Pro Tip!</strong>  After you have deployed your Cloud Function the first time, you can redeploy with a shortened syntax. From the command line, simply type:</p>
+<p><code>$ gcloud functions deploy generate_thumbnail</code></p>
 </aside>
-<p>Choose <strong>Save</strong> and then click <strong>Next.</strong></p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 4: Choose a Runtime" duration="0">
-        <p>Cloud Functions can be programmed in a variety of programming languages.  This tutorial uses Python (currently Python 3.7) for the function&#39;s source code.</p>
-<p>Choose your Runtime (Python 3.7) from the dropdown.<br><img style="width: 624.00px" src="img/20d91d26e86d2e4a.png"></p>
-<p class="image-container"><img style="width: 624.00px" src="img/541545d06d2af6ae.png"></p>
-<p>If this is the first function you&#39;ve created in this project, you will be asked to enable the Cloud Build API.  Select the <strong>Enable API</strong> button and then choose <strong>Enable</strong> on the page that appears.</p>
-<p>You may close the window for the Cloud Build API.</p>
-<h2 is-upgraded>Set the Entry Point</h2>
-<p>Your Cloud Function requires a specific Python function to run when the function is triggered.  By default, the function is named <code>hello_world</code>  You may leave the default in place.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/4b45fe82699b7e02.png"></p>
-<h2 is-upgraded>Choose Your Source Code Location</h2>
-<p>Source code for a Cloud Function can be added from different locations (a .zip file or a Cloud Source repository.)  For this Cloud Function, you will use the inline editor to write your code.</p>
-<p>Ensure <strong>Inline Editor</strong> is selected in the <strong>Source code</strong> dropdown.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/2df6e4985284beb0.png"></p>
+      <google-codelab-step label="Step 3: Write the Code for the Extract EXIF Cloud Function" duration="0">
+        <p>In the Google Cloud Shell, navigate to the <code>gcf_extract_exif</code> directory. </p>
+<p>On the command line, install the packages you need to support the Cloud Function:</p>
+<pre>$ npm install npm install @google-cloud/storage @google-cloud/firestore path fs-extra os exif-async parse-dms</pre>
+<p>Open the directory in the file editor and then open <code>index.js</code>.</p>
+<h2 is-upgraded>Import Node Packages</h2>
+<p>Import the Node packages required for your function.</p>
+<p><code>globaljags/gcf_extract_exif/index.js</code></p>
+<pre><code>// Import packages
+const {Storage} = require(&#39;@google-cloud/storage&#39;);
+const {Firestore} = require(&#39;@google-cloud/firestore&#39;);
+const path = require(&#39;path&#39;);
+const fs = require(&#39;fs-extra&#39;);
+const os = require(&#39;os&#39;);
+const getExif = require(&#39;exif-async&#39;);
+const parseDMS = require(&#39;parse-dms&#39;);
+</code></pre>
+<h2 is-upgraded>Write the Entry Point Function</h2>
+<p>Complete the logic of the entry point function. This is the function that will be run first when the Cloud Function is triggered.</p>
+<p>Substitute your values in the code below where indicated.</p>
+<ul>
+<li><strong>YOUR-IMAGES-BUCKET </strong><em>This is the globally unique identifier for the bucket where the full-resolution photos were uploaded</em></li>
+</ul>
+<p><code>globaljags/gcf_extract_exif/index.js</code></p>
+<pre><code>// Entry Point function
+exports.extractExif = async (file, context) =&gt; {
+  const gcsFile = file;
+  const thumbnailFileName = gcsFile.name;
+  const imageFileName = gcsFile.name.split(&#39;_&#39;)[1];
+  const storage = new Storage();
+  const firestore = new Firestore();
+  const thumbnailsBucket = storage.bucket(gcsFile.bucket);
+  const imagesBucket = storage.bucket(&#39;YOUR-IMAGES-BUCKET&#39;);
+
+  // This shows me which GCP version of the function is executing
+  const version = process.env.K_REVISION;
+  console.log(`Running Cloud Function version ${version}`);
+
+  // Create a working directory on the VM that runs our GCF to download the original file
+  // The value of this variable will be something like &#39;tmp/exif&#39;
+  const workingDir = path.join(os.tmpdir(), &#39;exif&#39;);
+
+  // Create a variable that holds the path to the &#39;local&#39; version of the file
+  // The value of this will be something like &#39;tmp/exif/thumb@64_398575858493.png&#39;
+  const tempFilePath = path.join(workingDir, thumbnailFileName);
+  console.log(`tempFilePath: ${tempFilePath}`);
+
+  // Wait until the working directory is ready
+  await fs.ensureDir(workingDir);
+  console.log(`Working directory is ready.`);
+
+  // Download the original file to the path on the &#39;local&#39; VM
+  await thumbnailsBucket.file(gcsFile.name).download({
+    destination: tempFilePath
+  });  
+
+  // Ensure the file is downloaded to the &#39;local&#39; VM
+  await fs.ensureFile(tempFilePath);
+  console.log(`File downloaded: ${tempFilePath}`);
+
+  // Pass the LOCAL file to our readExifData function
+  // This will return an object with information about the CreateDate, latitude, and longitude of the photo
+  const dataObject = await readExifData(tempFilePath);
+  console.log(`The dataObject:`);
+  console.log(dataObject);
+
+  // Create variables that hold the HTTP URLs to the different versions of the photo
+  let thumb64URL = `https://storage.googleapis.com/${thumbnailsBucket.name}/${thumbnailFileName}`
+  let imageURL = `https://storage.googleapis.com/${imagesBucket.name}/${imageFileName}`
+
+  // Update the dataObject to add links to the image
+  dataObject.fileName = imageFileName;
+  dataObject.image_url = imageURL;
+  dataObject.thumb64_url = thumb64URL;
+  console.log(dataObject);
+
+  // Write the dataObject to a Firestore document
+  let collectionRef = firestore.collection(&#39;photos&#39;);
+  let documentRef = await collectionRef.add(dataObject);
+  console.log(`Document created: ${documentRef.id}`);
+
+  // Delete the temp working directory and its files from the GCF&#39;s VM
+  await fs.remove(workingDir);
+  console.log(`Deleted the working directory.`);
+};
+
+</code></pre>
+<h2 is-upgraded>Deploy the Cloud Function</h2>
+<p>Deploying the Cloud Function allows you to execute and test its logic. To deploy, you MUST know the values for the following variables. Substitute your values in the commands below.</p>
+<ul>
+<li><strong>GCP-PROJECT-NAME </strong><em>This is the name of your Google Cloud Project</em></li>
+<li><strong>GCS-THUMBNAILS-BUCKET </strong><em>This is the globally unique identifier for the bucket where thumbnail photos were uploaded</em></li>
+</ul>
+<h3 is-upgraded>Ensure your Cloud Project is Active</h3>
+<pre>$ gcloud config set project GCP-PROJECT-NAME</pre>
+<p>If asked, click the button to Authorize access to your project from Cloud Shell.</p>
+<h3 is-upgraded>Deploy the Cloud Function</h3>
+<pre>$ gcloud functions deploy extract_exif \
+--entry-point extractExif \
+--runtime nodejs18 \
+--trigger-bucket=GCS-THUMBNAILS-BUCKET</pre>
+<p>If asked to enable the Cloud Functions and Cloud Build APIs, do so.</p>
+<p>Deploying the function can take up to 3 minutes.</p>
+<aside class="special"><p><strong>Pro Tip!</strong>  After you have deployed your Cloud Function the first time, you can redeploy with a shortened syntax. From the command line, simply type:</p>
+<p><code>$ gcloud functions deploy extract_exif</code></p>
+</aside>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 5: Examine the ‘Hello World&#39; Code" duration="0">
-        <p>We will use the default code provided in the <code>hello_world(request)</code> function.  Take a moment to read through the code to understand its functionality.</p>
-<p>This program uses the Python Flask web framework to examine the HTTP request.  It collects the JSON values in the request into a variable called <code>request_json</code></p>
-<p>The program then proceeds to examine the incoming arguments from the request to look for a specific argument named <code>message</code>.  If a value is found, the function returns that value.</p>
-<p>If no message is found in the arguments, the program looks for a key named <code>message</code> in the <code>request_json</code> variable.  If a value is found there, the function returns it.</p>
-<p>If no message is found in either the request arguments or the request&#39;s JSON, the function simply returns the string <code>‘Hello World'</code></p>
-<p><code>main.py</code></p>
+      <google-codelab-step label="Step 4: Complete the Back End of the Website" duration="0">
+        <p>In the Google Cloud Shell, navigate to the <code>web</code> directory. You can preview the starter website by entering <code>npm install && npm start</code> at the shell&#39;s command line. Press <code>Control+C</code> to stop the website script.</p>
+<p>On the command line, install the packages you need to finish the back end of the website:</p>
+<pre>$ npm install @google-cloud/storage multer</pre>
+<p>Open the directory in the file editor and then open <code>app.js</code>.</p>
+<h2 is-upgraded>Import Node Packages</h2>
+<p>Import the Node packages required for your website.</p>
+<p><code>globaljags/web/app.js</code></p>
+<pre><code>// Import packages
+const {Storage} = require(&#39;@google-cloud/storage&#39;);
+const {Firestore} = require(&#39;@google-cloud/firestore&#39;);
+const path = require(&#39;path&#39;);
+const fs = require(&#39;fs-extra&#39;);
+const os = require(&#39;os&#39;);
+const sharp = require(&#39;sharp&#39;);
+const getExif = require(&#39;exif-async&#39;);
+const parseDMS = require(&#39;parse-dms&#39;);</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 5: Complete the Front End of the Website" duration="0">
+        <p>In the Google Cloud Shell, navigate to the <code>web</code> directory. You can preview the starter website by entering <code>npm install && npm start</code> at the shell&#39;s command line. Press <code>Control+C</code> to stop the website script.</p>
+<p><code>globaljags/web/public/index.html</code></p>
 <pre><code>def hello_world(request):
     &#34;&#34;&#34;Responds to any HTTP request.
     Args:
@@ -132,111 +348,17 @@
         return request_json[&#39;message&#39;]
     else:
         return f&#39;Hello World!&#39;</code></pre>
-<p>Now that you have reviewed the code, it&#39;s time to deploy our function!</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Step 6: Deploy the ‘Hello World&#39; Cloud Function" duration="0">
-        <p>Deploy the function by selecting the <strong>Deploy</strong> button at the bottom of the window.  Deploying the function does the following:</p>
-<ul>
-<li>Begins the build process that assembles and validates your code</li>
-<li>Deploys the Cloud Function to a virtual server where it can be invoked through a web browser</li>
-</ul>
-<p>The deployment process may take a few moments (especially if this is the first time a Cloud Function has been deployed.)  When the process is complete, you should see a success icon next to the Cloud Function&#39;s name in the list of functions.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/f9a54fe08b033c73.png"></p>
-<aside class="warning"><p><strong>Error alert!</strong>  If you see an error about incorrect permissions, ensure you have selected the <strong>Enable API</strong> button to enable the Cloud Build API!</p>
-</aside>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Step 7: Invoke the ‘Hello World&#39; Cloud Function" duration="0">
-        <p>From the list of Cloud Functions, select the name of the Cloud Function to be taken to the Function details screen.</p>
-<p>On the Function details screen, choose the tab labeled <strong>Trigger</strong>.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/d459159529b972c7.png"></p>
-<p>Because this is a Cloud Function triggered by an HTTP call, the screen will show a URL that will activate your Cloud Function.  Select the link provided on the page to run your Cloud Function.</p>
-<p>A new window or tab will open that will produce the &#34;Hello World!&#34; output from your source code.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/334e1d109a2a8b3b.png"></p>
-<p>If you see this message in your browser, you have successfully invoked your first Cloud Function!</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Step 8: Customize the ‘Hello World&#39; Cloud Function" duration="0">
-        <p>Return to the window or tab that shows the Function details for your Cloud Function.  Choose the <strong>Edit</strong> link near the top of the page to edit the logic of your function.</p>
-<p>The Configuration screen allows you to update the name of the Cloud Function and/or its URL for invocation.  You do not need to make any changes on this screen, so choose <strong>Next</strong>.</p>
-<p>You are now presented with the Inline Editor and the original source code of the function.</p>
-<p>Update the default return value from the function to customize the message to something other than &#34;Hello World!&#34;</p>
-<p>When you have made your updates, select the <strong>Deploy</strong> button toward the bottom of the window.  This will initiate the build process and re-deploy your function.  The process will take a few seconds to complete.</p>
-<p>If there are no errors in your source code and no issues with deployment you should again see the success icon next to the Cloud Function&#39;s name.</p>
-<p>Test your function again by selecting the name of the Cloud Function, visiting the <strong>Trigger</strong> tab, and selecting the provided URL.  The output of the Cloud Function should now match the edits you made to the source code.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/4d24adee4fc148f7.png"></p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Step 9: Create a ‘Pirate Name Generator&#39; Cloud Function" duration="0">
-        <p>You will now repeat steps 2-7 to create a new Cloud Function.  This function will use Python code to collect input from the user (via the querystring) and return a custom pirate name based on the initials provided in the input.</p>
-<h2 is-upgraded>Create a Cloud Function</h2>
-<p>Create a new Google Cloud Function with the following values:</p>
-<ul>
-<li><strong>Function name: </strong><code>pirate_name_generator</code></li>
-<li><strong>Region: </strong><em>Choose the region closest to you</em></li>
-<li><strong>Trigger type:</strong> HTTP</li>
-<li><strong>URL: </strong><em>Ensure the URL includes the Function name.  If not, select a different trigger and then re-select HTTP</em></li>
-<li><strong>Authentication:</strong> Allow unauthenticated invocations</li>
-<li><strong>Runtime:</strong> Python 3.7</li>
-<li><strong>Entry point: </strong><code>main</code></li>
-<li><strong>Source code:</strong> Inline Editor</li>
-</ul>
-<h2 is-upgraded>Add Source Code to the Cloud Function</h2>
-<p>Select the <strong>Edit</strong> button or pencil icon next to the <code>main.py</code> file in the Inline Editor.</p>
-<p>Select and delete all of the code that was automatically created.  Replace the code with the following (simply copy and paste):</p>
-<p><code>main.py</code></p>
-<pre><code>first_names = [&#34;Lady&#34;, &#34;Dirty&#34;, &#34;Squidlips&#34;, &#34;Bowman&#34;, &#34;Buccaneer&#34;, &#34;Two Toes&#34;, &#34;Sharkbait&#34;, &#34;Old&#34;, &#34;Peg Leg&#34;, &#34;Fluffbucket&#34;, &#34;Scallywag&#34;, &#34;Bucko&#34;, &#34;Dead Man&#34;, &#34;Matey&#34;, &#34;Jolly&#34;, &#34;Stinky&#34;, &#34;Bloody&#34;, &#34;Mad&#34;, &#34;Miss&#34;, &#34;Red&#34;, &#34;Captain&#34;, &#34;Bretheren&#34;, &#34;Rapscallion&#34;, &#34;Landlubber&#34;, &#34;Wench&#34;, &#34;Freebooter&#34;]
-
-middle_names = [&#34;Creeper&#34;, &#34;Jim&#34;, &#34;Storm&#34;, &#34;Scruff&#34;, &#34;Legs&#34;, &#34;O&#39;&#34;, &#34;Rat&#34;, &#34;Jack&#34;, &#34;George&#34;, &#34;Head&#34;, &#34;Cackle&#34;, &#34;Patch&#34;, &#34;Bones&#34;, &#34;Plank&#34;, &#34;Greedy&#34;, &#34;Sea&#34;, &#34;Mama&#34;, &#34;Spike&#34;, &#34;Squiffy&#34;, &#34;Gold&#34;, &#34;Yellow&#34;, &#34;Felony&#34;, &#34;Eddit&#34;, &#34;Bay&#34;, &#34;Thomas&#34;, &#34;Spot&#34;]
-
-last_names = [&#34;Magoo&#34;, &#34;Byrd&#34;, &#34;Jackson&#34;, &#34;Sparrow&#34;, &#34;McCracken&#34;, &#34;Jones&#34;, &#34;Ned Head&#34;, &#34;Bar&#34;, &#34;O&#39;Fish&#34;, &#34;Kidd&#34;, &#34;O&#39;Malley&#34;, &#34;Barnacle&#34;, &#34;Holystone&#34;, &#34;Hornswaggle&#34;, &#34;McStinky&#34;, &#34;Swashbuckler&#34;, &#34;Sea Wolf&#34;, &#34;Beard&#34;, &#34;Chumbucket&#34;, &#34;Rivers&#34;, &#34;Morgan&#34;, &#34;Tuna Breath&#34;, &#34;Three Gates&#34;, &#34;Bailey&#34;, &#34;the Wrangler&#34;, &#34;Of Dark Water&#34;]
-
-alpha = &#34;abcdefghijklmnopqrstuvwxyz&#34;
-
-def main(request):
-    &#34;&#34;&#34;Responds to any HTTP request.
-    Args:
-        request (flask.Request): HTTP request object.
-    Returns:
-        The response text or any set of values that can be turned into a
-        Response object using
-        `make_response &lt;http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response&gt;`.
-    &#34;&#34;&#34;
-    request_json = request.get_json()
-    if request.args and &#39;first&#39; in request.args and &#39;middle&#39; in request.args and &#39;last&#39; in request.args:
-        first = name_lookup(request.args[&#39;first&#39;], first_names)
-        middle = name_lookup(request.args[&#39;middle&#39;], middle_names)
-        last = name_lookup(request.args[&#39;last&#39;], last_names)
-        return f&#39;Your pirate name is {first} {middle} {last}.&#39; 
-    else:
-        return f&#39;We couldn\&#39;t determine your name from the inputs provided. {request.args}&#39;
-
-def name_lookup(input, list):
-    initial = input[0].lower()
-    initial_position = alpha.find(initial)
-    name_part = list[initial_position]
-    return name_part</code></pre>
-<p>Once the above code is pasted into the Inline Editor, choose <strong>Deploy</strong>.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Step 10: Invoke the ‘Pirate Name Generator&#39; Cloud Function" duration="0">
-        <p>The code provided to you expects <em>three</em> inputs from the user.  Any other amount of input will cause the cloud function to fail and provide a user-friendly error message through the browser.</p>
-<p>To provide the user inputs, you will manually append a querystring when calling the cloud function.   </p>
-<p>To invoke the cloud function, open the URL provided in the <strong>Trigger</strong> tab.  Then copy the following querystring and append it to the end of the URL in the browser:</p>
-<pre><code>?first=beth&amp;middle=sharon&amp;last=lang</code></pre>
-<p>With the URL and querystring together, invoke the cloud function by visiting the URL.  The output from the cloud function should read <em>Your pirate name is Dirty Squiffy Barnacle.</em></p>
-<p>Adjust the values in the querystring and test a variety of names.  Ensure you keep the key-value pairs intact: your querystring must include exactly three elements, named <code>first</code>, <code>middle</code>, and <code>last</code>.</p>
+<p>In the Google Cloud Shell, open the <code>globaljags</code> directory in your embedded cloud editor.</p>
+<p>You need to edit the <code>globaljags/web/public/index.html</code> file to add your API key.</p>
+<ol type="1" start="1">
+<li>Find the code block denoted below</li>
+<li>Highlight the text that states <strong>REPLACE_WITH_YOUR_KEY</strong></li>
+<li>Paste your copied Google Maps API key</li>
+</ol>
+<p><code>globaljags/web/public/index.html</code></p>
+<pre><code>&lt;!--- Add the API key for your Google Map --&gt;
+&lt;script defer type=&#34;text/javascript&#34; src=&#34;https://maps.googleapis.com/maps/api/js?key=REPLACE_WITH_YOUR_KEY&amp;callback=initMap&#34;&gt;&lt;/script&gt;
+</code></pre>
 
 
       </google-codelab-step>
