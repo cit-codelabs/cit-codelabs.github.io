@@ -72,33 +72,37 @@
 <h2 is-upgraded>Create GCS Buckets</h2>
 <p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
 <p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
-<ul>
+<ol type="1" start="1">
 <li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
 <li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Storage&#34;</strong> and choose <strong>&#34;Cloud Storage&#34;</strong></li>
 <li>Click <strong>&#34;Create&#34;</strong></li>
 <li>Create THREE buckets that are globally, uniquely named for <em>uploads</em>, <em>thumbnails</em>, and <em>images </em>(see below)</li>
 <li>Leave all other options at their default settings</li>
 <li>Click <strong>&#34;Create&#34;</strong></li>
-</ul>
+</ol>
 <aside class="warning"><p><strong>Important!</strong>  Your bucket names must be completely unique across all GCP users.  One suggestion is to incorporate your username into the bucketname to assist in finding a globally unique name. Examples:</p>
-<ul>
+<ol type="1" start="7">
 <li><em>username</em>-globaljags-uploads</li>
 <li><em>username</em>-globaljags-thumbnails</li>
 <li><em>username</em>-globaljags-images</li>
-</ul>
+</ol>
 </aside>
 <h2 is-upgraded>Configure Access to Your GCS Buckets</h2>
 <p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
 <p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
-<ul>
+<ol type="1" start="1">
 <li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
 <li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Storage&#34;</strong> and choose <strong>&#34;Cloud Storage&#34;</strong></li>
 <li>You should see the three buckets you created in the previous step</li>
-<li>You may see additional buckets created by other build processes</li>
-<li>You need to make the assets in your <strong>thumbnails</strong> and <strong>images</strong> buckets public so that they can be viewed over the web</li>
-</ul>
-<p>Complete these steps for EACH bucket:</p>
+</ol>
 <ul>
+<li>You may see additional buckets created by other build processes</li>
+</ul>
+<ol type="1" start="4">
+<li>You need to make the assets in your <strong>thumbnails</strong> and <strong>images</strong> buckets public so that they can be viewed over the web</li>
+</ol>
+<p>Complete these steps for EACH bucket:</p>
+<ol type="1" start="1">
 <li>Click the &#34;three dot&#34; menu to the right of the bucket&#39;s name</li>
 <li>Click <strong>&#34;Edit access&#34;</strong></li>
 <li>Click <strong>&#34;REMOVE PUBLIC ACCESS PREVENTION&#34;</strong></li>
@@ -111,23 +115,39 @@
 <li>In the &#34;Select a role&#34; dropdown, choose <strong>&#34;Cloud Storage&#34;</strong> and then <strong>&#34;Storage Object Viewer&#34;</strong></li>
 <li>Click <strong>&#34;Save&#34;</strong></li>
 <li>Another modal will appear. Click <strong>&#34;ALLOW PUBLIC ACCESS&#34;</strong></li>
-</ul>
+</ol>
+<h2 is-upgraded>Enable the App Engine API</h2>
+<p>You will host your final web application on App Engine - a containerized website hosting service.</p>
+<p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
+<ol type="1" start="1">
+<li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
+<li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Serverless&#34;</strong> and choose <strong>&#34;App Engine&#34;</strong></li>
+<li>Click <strong>&#34;Create Application&#34;</strong></li>
+<li>Leave the default region selected and click <strong>&#34;NEXT&#34;</strong></li>
+<li>It will take a few minutes for your the API to be enabled</li>
+<li>You do not need to add a configuration now. Click <strong>&#34;I&#39;LL DO THIS LATER&#34;</strong></li>
+</ol>
 <h2 is-upgraded>Create a Firestore Database</h2>
 <p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
 <p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
-<ul>
+<ol type="1" start="1">
 <li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
 <li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Databases&#34;</strong> and choose <strong>&#34;Firestore&#34;</strong></li>
 <li>Your database must be in Native mode to send updates to the website. Choose <strong>&#34;Select Native Mode&#34;</strong></li>
 <li>When asked to select a location, choose <strong>&#34;nam5 (United States)&#34;</strong></li>
-</ul>
+</ol>
 <h2 is-upgraded>Create a Firebase Project</h2>
 <p>Visit the <strong>Firebase</strong> Cloud Console and ensure your GlobalJags project is active.</p>
 <p><a href="https://console.firebase.google.com" target="_blank"><paper-button class="colored" raised>Open the Firebase Console</paper-button></a></p>
-<ul>
+<ol type="1" start="1">
 <li>Choose <strong>&#34;Add Project&#34;</strong></li>
 <li>In the field labeled &#34;Enter your project name&#34;, select your <em>existing</em> Google Cloud Project</li>
+</ol>
+<ul>
 <li>This will incorporate Firebase functionality into your existing project</li>
+</ul>
+<ol type="1" start="3">
 <li>Click <strong>&#34;Continue&#34;</strong></li>
 <li>A modal window will confirm your billing with Google Cloud. Click <strong>&#34;Confirm plan&#34; </strong>and then <strong>&#34;Continue&#34;</strong></li>
 <li>Disable Google Analytics for the project and click <strong>&#34;Add Firebase&#34;</strong></li>
@@ -136,16 +156,16 @@
 <li>Under &#34;Register app&#34;, provide an app nickname. You can enter <strong>&#34;GlobalJags&#34;</strong></li>
 <li>Click <strong>&#34;Register app&#34;</strong></li>
 <li>Under &#34;Add Firebase SDK&#34;, select <strong>&#34;Use a &lt;script&gt; tag&#34;</strong>. COPY this information and save it for later. You will need it when we write the front end of the website.</li>
-</ul>
+</ol>
 <h2 is-upgraded>Update your Firebase Rules</h2>
 <p>Visit the <strong>Firebase</strong> Cloud Console and ensure your GlobalJags project is active.</p>
 <p><a href="https://console.firebase.google.com" target="_blank"><paper-button class="colored" raised>Open the Firebase Console</paper-button></a></p>
-<ul>
+<ol type="1" start="1">
 <li>From the Project Overview screen left-hand navigation, click <strong>&#34;Build&#34;</strong> and then click <strong>&#34;Firestore Database&#34;</strong></li>
 <li>In the top navigation, click <strong>&#34;Rules&#34;</strong></li>
 <li>Update the existing rules so it matches the settings below</li>
 <li>Click <strong>&#34;Publish&#34;</strong></li>
-</ul>
+</ol>
 <p><code>Firestore Database Rules</code></p>
 <pre><code>rules_version = &#39;2&#39;;
 service cloud.firestore {
@@ -179,9 +199,103 @@ const sharp = require(&#39;sharp&#39;);</code></pre>
 <p>Complete the logic of the entry point function. This is the function that will be run first when the Cloud Function is triggered.</p>
 <p>Substitute your values in the code below where indicated. You created your storage buckets in Step 2: Create GCS Buckets.</p>
 <ul>
-<li><strong>YOUR-THUMBNAILS-BUCKET </strong><em>This is the globally unique identifier for the bucket where the thumbnail photos will be uploaded</em></li>
-<li><strong>YOUR-IMAGES-BUCKET </strong><em>This is the globally unique identifier for the bucket where the full-resolution photos will be uploaded</em></li>
+<li><strong>GCS-THUMBNAILS-BUCKET </strong><em>This is the globally unique identifier for the bucket where the thumbnail photos will be uploaded</em></li>
+<li><strong>GCS-IMAGES-BUCKET </strong><em>This is the globally unique identifier for the bucket where the full-resolution photos will be uploaded</em></li>
 </ul>
+<p><code>globaljags/generate_thumbnail/index.js</code></p>
+<pre><code>// Entry point function
+exports.generateThumbnail = async (file, context) =&gt; {
+  const gcsFile = file;
+  const storage = new Storage();
+  const sourceBucket = storage.bucket(gcsFile.bucket);
+  const thumbnailsBucket = storage.bucket(GCS-THUMBNAILS-BUCKET);
+  const imagesBucket = storage.bucket(GCS-IMAGES-BUCKET);
+
+  const version = process.env.K_REVISION;
+  console.log(`Running Cloud Function version ${version}`);
+
+  console.log(`File name: ${gcsFile.name}`);
+  console.log(`Generation number: ${gcsFile.generation}`);
+  console.log(`Content type: ${gcsFile.contentType}`);
+
+  // Reject images that are not jpeg or png files
+  let fileExtension = &#39;&#39;;
+  let validFile = false;
+
+  if (gcsFile.contentType === &#39;image/jpeg&#39;) {
+    console.log(`Generation number: ${gcsFile.generation}`);
+    console.log(`Content type: ${gcsFile.contentType}`);
+    console.log(&#39;This is a JPEG file.&#39;);
+    fileExtension = &#39;jpg&#39;;
+    validFile = true;
+  } else if (gcsFile.contentType === &#39;image/png&#39;) {
+    console.log(`Generation number: ${gcsFile.generation}`);
+    console.log(`Content type: ${gcsFile.contentType}`);
+    console.log(&#39;This is a PNG file.&#39;);
+    fileExtension = &#39;png&#39;;
+    validFile = true;
+  } else {
+    console.log(`This is not a valid file type.`);
+  }
+
+  // If the file is a valid photograph, download it to the &#39;local&#39; VM so that we can create a thumbnail image
+  if (validFile) {
+    // Create a new filename for the &#39;final&#39; version of the image file
+    // The value of this will be something like &#39;12745649237578595.jpg&#39;
+    const finalFileName = `${gcsFile.generation}.${fileExtension}`;
+
+    // Create a working directory on the VM that runs our GCF to download the original file
+    // The value of this variable will be something like &#39;tmp/thumbs&#39;
+    const workingDir = path.join(os.tmpdir(), &#39;thumbs&#39;);
+
+    // Create a variable that holds the path to the &#39;local&#39; version of the file
+    // The value of this will be something like &#39;tmp/thumbs/398575858493.png&#39;
+    const tempFilePath = path.join(workingDir, finalFileName);
+    console.log(`tempFilePath: ${tempFilePath}`);
+
+    // Wait until the working directory is ready
+    await fs.ensureDir(workingDir);
+    console.log(`Working directory is ready.`);
+
+    // Download the original file to the path on the &#39;local&#39; VM
+    await sourceBucket.file(gcsFile.name).download({
+      destination: tempFilePath
+    });
+    console.log(`File downloaded to the temp directory.`);
+
+    // Upload our local version of the file to the final images bucket
+    await imagesBucket.upload(tempFilePath);
+    console.log(`File uploaded.`)
+
+    // Create a name for the thumbnail image
+    // The value for this will be something like `thumb@64_1234567891234567.jpg`
+    const thumbName = `thumb@64_${finalFileName}`;
+
+    // Create a path where we will store the thumbnail image locally
+    // This will be something like `tmp/thumbs/thumb@64_1234567891234567.jpg`
+    const thumbPath = path.join(workingDir, thumbName);
+    console.log(`Thumb path: ${thumbPath}`);
+
+    // Use the sharp library to generate the thumbnail image and save it to the thumbPath
+    // Then upload the thumbnail to the thumbnailsBucket in cloud storage
+    await sharp(tempFilePath).resize(64).withMetadata().toFile(thumbPath).then( async () =&gt; {
+      console.log(`Resize complete: ${thumbName}`);
+      await thumbnailsBucket.upload(thumbPath);
+      console.log(`Upload complete: ${thumbName}`);
+    });
+
+    // Delete the temp working directory and its files from the GCF&#39;s VM
+    await fs.remove(workingDir);
+    console.log(`Deleted the working directory.`);
+  } // end of validFile==true
+
+  // DELETE the original file uploaded to the &#34;Uploads&#34; bucket
+  await sourceBucket.file(gcsFile.name).delete();
+  console.log(`Deleting uploaded file: ${gcsFile.name}`);
+}
+
+
+</code></pre>
 <h2 is-upgraded>Deploy the Cloud Function</h2>
 <p>Deploying the Cloud Function allows you to execute and test its logic. To deploy, you MUST know the values for the following variables. Substitute your values in the commands below.</p>
 <ul>
@@ -205,7 +319,7 @@ const sharp = require(&#39;sharp&#39;);</code></pre>
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 3: Write the Code for the Extract EXIF Cloud Function" duration="0">
+      <google-codelab-step label="Step 4: Write the Code for the Extract EXIF Cloud Function" duration="0">
         <p>In the Google Cloud Shell, navigate to the <code>gcf_extract_exif</code> directory. </p>
 <p>On the command line, install the packages you need to support the Cloud Function:</p>
 <pre>$ npm install npm install @google-cloud/storage @google-cloud/firestore path fs-extra os exif-async parse-dms</pre>
@@ -226,7 +340,7 @@ const parseDMS = require(&#39;parse-dms&#39;);
 <p>Complete the logic of the entry point function. This is the function that will be run first when the Cloud Function is triggered.</p>
 <p>Substitute your values in the code below where indicated.</p>
 <ul>
-<li><strong>YOUR-IMAGES-BUCKET </strong><em>This is the globally unique identifier for the bucket where the full-resolution photos were uploaded</em></li>
+<li><strong>GCS-IMAGES-BUCKET </strong><em>This is the globally unique identifier for the bucket where the full-resolution photos were uploaded</em></li>
 </ul>
 <p><code>globaljags/gcf_extract_exif/index.js</code></p>
 <pre><code>// Entry Point function
@@ -237,7 +351,7 @@ exports.extractExif = async (file, context) =&gt; {
   const storage = new Storage();
   const firestore = new Firestore();
   const thumbnailsBucket = storage.bucket(gcsFile.bucket);
-  const imagesBucket = storage.bucket(&#39;YOUR-IMAGES-BUCKET&#39;);
+  const imagesBucket = storage.bucket(&#39;GCS-IMAGES-BUCKET&#39;);
 
   // This shows me which GCP version of the function is executing
   const version = process.env.K_REVISION;
@@ -292,6 +406,63 @@ exports.extractExif = async (file, context) =&gt; {
 };
 
 </code></pre>
+<h2 is-upgraded>Write the Helper Function - readExifData</h2>
+<p>Complete the logic of the first helper function. This function examines the local version of the file and reads the EXIF data embedded in it.</p>
+<p><code>globaljags/gcf_extract_exif/index.js</code></p>
+<pre><code>// Helper functions
+async function readExifData(localFile) {
+  // Use the exif-async package to read the EXIF data
+  let exifData;
+  try {
+    exifData = await getExif(localFile);
+    console.log(exifData.gps);
+
+    // Create an object that will hold the pertinent EXIF elements
+    let dataObject = {}
+    dataObject.createDate = exifData.exif.CreateDate;
+
+    // If EXIF data exists, add it to the dataObject
+    if (Object.keys(exifData.gps).length &gt; 0){
+      // Call helper function to convert GPS coordinates from DMS to decimal
+      let gpsInDecimal = getGPSCoordinates(exifData.gps);
+      console.log(gpsInDecimal);
+      console.log(`Latitude: ${gpsInDecimal.lat}`);
+      console.log(`Longitude: ${gpsInDecimal.lon}`);
+      // Add latitude and longitude information to the dataObject
+      dataObject.latitude = gpsInDecimal.lat;
+      dataObject.longitude = gpsInDecimal.lon;
+      // Return the dataObject to the calling function
+      return dataObject;
+    } else {
+      // If there is no EXIF data, return the empty dataObject
+      console.log(&#39;No GPS data was found in this photo.&#39;);
+      return dataObject;
+    }
+
+  } catch(err) {
+    console.log(`Error in readExifData function.`);
+    console.log(err);
+    return null;
+  }
+}</code></pre>
+<h2 is-upgraded>Write the Helper Function - getGPSCoordinates</h2>
+<p>Complete the logic of the second helper function. This function receives an object that contains a GPS location in DMS (&#34;degrees-minutes-seconds&#34;) format and converts it to decimal-based coordinates.</p>
+<p><code>globaljags/gcf_extract_exif/index.js</code></p>
+<pre><code>// Helper functions
+function getGPSCoordinates(g) {
+  // Parse DMS needs a string in the format of:
+  // 51:30:0.5486N 0:7:34.4503W
+  // DEG:MIN:SECDIRECTION DEG:MIN:SECDIRECTION
+  // const g = exifData.gps;
+  const latString = `${g.GPSLatitude[0]}:${g.GPSLatitude[1]}:${g.GPSLatitude[2]}${g.GPSLatitudeRef}`;
+  const lonString = `${g.GPSLongitude[0]}:${g.GPSLongitude[1]}:${g.GPSLongitude[2]}${g.GPSLongitudeRef}`;
+
+  // Use the parse-dms package to convert from DMS to decimal values
+  degCoords = parseDMS(`${latString} ${lonString}`);
+
+  // Return an object with the latitude and longitude in decimal
+  return degCoords;
+}</code></pre>
 <h2 is-upgraded>Deploy the Cloud Function</h2>
 <p>Deploying the Cloud Function allows you to execute and test its logic. To deploy, you MUST know the values for the following variables. Substitute your values in the commands below.</p>
 <ul>
@@ -315,46 +486,87 @@ exports.extractExif = async (file, context) =&gt; {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 4: Complete the Back End of the Website" duration="0">
+      <google-codelab-step label="Step 5: Complete the Back End of the Website" duration="0">
         <p>In the Google Cloud Shell, navigate to the <code>web</code> directory. You can preview the starter website by entering <code>npm install && npm start</code> at the shell&#39;s command line. Press <code>Control+C</code> to stop the website script.</p>
 <p>On the command line, install the packages you need to finish the back end of the website:</p>
-<pre>$ npm install @google-cloud/storage multer</pre>
+<pre>$ npm install @google-cloud/storage multer express path</pre>
 <p>Open the directory in the file editor and then open <code>app.js</code>.</p>
 <h2 is-upgraded>Import Node Packages</h2>
 <p>Import the Node packages required for your website.</p>
 <p><code>globaljags/web/app.js</code></p>
 <pre><code>// Import packages
-const {Storage} = require(&#39;@google-cloud/storage&#39;);
-const {Firestore} = require(&#39;@google-cloud/firestore&#39;);
+const express = require(&#39;express&#39;);
 const path = require(&#39;path&#39;);
-const fs = require(&#39;fs-extra&#39;);
-const os = require(&#39;os&#39;);
-const sharp = require(&#39;sharp&#39;);
-const getExif = require(&#39;exif-async&#39;);
-const parseDMS = require(&#39;parse-dms&#39;);</code></pre>
+const Multer = require(&#39;multer&#39;);
+const {Storage} = require(&#39;@google-cloud/storage&#39;);</code></pre>
+<h2 is-upgraded>Add Configuration for the Web Application</h2>
+<p>Set the variables and configurations needed for your web application to run.</p>
+<p>Substitute your values in the code below where indicated.</p>
+<ul>
+<li><strong>GCS-UPLOADS-BUCKET </strong><em>This is the globally unique identifier for the bucket where the full-resolution photos will be uploaded</em></li>
+</ul>
+<p><code>globaljags/web/app.js</code></p>
+<pre><code>  // Set the port
+  const port = 8080;
+
+  // Create instances of necessary packages
+  const app = express();
+  const storage = new Storage();
+
+  // Set the identifier for the GCS bucket where the file will be stored
+  const bucket = storage.bucket(GCS-UPLOADS-BUCKET);
+
+  // Configure an instance of multer
+  const multer = Multer({
+    storage: Multer.memoryStorage(),
+    limits: {
+      fileSize: 15 * 1024 * 1024
+    }
+  });
+
+  // Middleware
+  app.use(&#39;/js&#39;, express.static(__dirname + &#39;/public/js&#39;));
+  app.use(&#39;/css&#39;, express.static(__dirname + &#39;/public/css&#39;));
+  app.use(&#39;/images&#39;, express.static(__dirname + &#39;/public/images&#39;));</code></pre>
+<h2 is-upgraded>Configure the &#34;/upload&#34; Route</h2>
+<p>The &#34;/uploads&#34; route will be called when a user uploads a file through the web form. Add the logic that moves the uploaded file to the GCS &#34;uploads&#34; bucket.</p>
+<p>The route uses the multer middleware to help configure and reference the file uploaded in the form. <strong>Be sure to add this middleware in the route&#39;s definition</strong> (line 1 in the code presented below).</p>
+<p>Adding a file to the &#34;uploads&#34; bucket will trigger the Generate Thumbnail Cloud Function.</p>
+<p><code>globaljags/web/app.js</code></p>
+<pre><code>app.post(&#39;/upload&#39;, multer.single(&#39;file&#39;), (req, res) =&gt; {
+  // Ensure a file was uploaded from the form
+  // If not, respond with a simple message and return from this function
+  if (!req.file) {
+    //TODO: Create a better error handling method if a file is not uploaded
+    res.status(400).send(&#39;No file uploaded.&#39;);
+    return;
+  }
+
+  // Create a streaming target where the file will be stored in GCS
+  const blob = bucket.file(req.file.originalname);
+
+  // Begin streaming the file to GCS
+  const blobStream = blob.createWriteStream();
+
+  // When the file has uploaded, redirect the browser to the home page
+  blobStream.on(&#39;finish&#39;, () =&gt; {
+    const uploadedFile = `${bucket.name}/${blob.name}`;
+    console.log(`File uploaded: ${uploadedFile}`);
+    res.redirect(&#39;/&#39;);
+  });
+
+  // Close the stream
+  blobStream.end(req.file.buffer);
+
+});</code></pre>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 5: Complete the Front End of the Website" duration="0">
+      <google-codelab-step label="Step 6: Complete the Front End of the Website" duration="0">
         <p>In the Google Cloud Shell, navigate to the <code>web</code> directory. You can preview the starter website by entering <code>npm install && npm start</code> at the shell&#39;s command line. Press <code>Control+C</code> to stop the website script.</p>
-<p><code>globaljags/web/public/index.html</code></p>
-<pre><code>def hello_world(request):
-    &#34;&#34;&#34;Responds to any HTTP request.
-    Args:
-        request (flask.Request): HTTP request object.
-    Returns:
-        The response text or any set of values that can be turned into a
-        Response object using
-        `make_response &lt;http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response&gt;`.
-    &#34;&#34;&#34;
-    request_json = request.get_json()
-    if request.args and &#39;message&#39; in request.args:
-        return request.args.get(&#39;message&#39;)
-    elif request_json and &#39;message&#39; in request_json:
-        return request_json[&#39;message&#39;]
-    else:
-        return f&#39;Hello World!&#39;</code></pre>
+<aside class="special"><p><strong>Status Report!</strong>  If you have completed steps 1-5, your website now allows you to upload a file and store the file in the &#34;uploads&#34; bucket. This will trigger the Generate Thumbnails and Extract EXIF Cloud Functions. However, your Google Map will not yet display thumbnail images or recenter itself. We will add that functionality now.</p>
+</aside>
 <h2 is-upgraded>Configure your Google Maps API Key</h2>
 <p>In the Google Cloud Shell, open the <code>globaljags</code> directory in your embedded cloud editor.</p>
 <p>You need to edit the <code>globaljags/web/public/index.html</code> file to add your API key.</p>
@@ -365,8 +577,149 @@ const parseDMS = require(&#39;parse-dms&#39;);</code></pre>
 </ol>
 <p><code>globaljags/web/public/index.html</code></p>
 <pre><code>&lt;!--- Add the API key for your Google Map --&gt;
-&lt;script defer type=&#34;text/javascript&#34; src=&#34;https://maps.googleapis.com/maps/api/js?key=REPLACE_WITH_YOUR_KEY&amp;callback=initMap&#34;&gt;&lt;/script&gt;
-</code></pre>
+&lt;script defer type=&#34;text/javascript&#34; src=&#34;https://maps.googleapis.com/maps/api/js?key=REPLACE_WITH_YOUR_KEY&amp;callback=initMap&#34;&gt;&lt;/script&gt;</code></pre>
+<h2 is-upgraded>Add Your Web Application&#39;s Firebase Configuration</h2>
+<p>In the Google Cloud Shell, open the <code>globaljags</code> directory in your embedded cloud editor.</p>
+<p>You need to edit the <code>globaljags/web/public/index.html</code> file to add your Firebase Configuration. <em>You created this configuration in Step 2: Create a Firebase Project.</em></p>
+<aside class="special"><p><strong>Need your configuration?</strong>  You can retrieve your configuration block in Firebase Console.</p>
+<ol type="1" start="1">
+<li>Go to the <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a></li>
+<li>Select your Project</li>
+<li>At the top of the Project Overview page, click the Web App just below the Project Name (it may be in a button labeled &#34;1 app&#34;) and click the <strong>Gear Icon</strong></li>
+<li>Scroll down to <strong>&#34;Your apps&#34;</strong> and ensure your Web app is selected</li>
+<li>Under <strong>&#34;SDK setup and configuration&#34;</strong> choose <strong>&#34;Config&#34;</strong></li>
+<li>Copy the code block that appears</li>
+</ol>
+</aside>
+<p><code>globaljags/web/public/index.html</code></p>
+<pre><code>      // Paste your web app&#39;s Firebase configuration
+      const firebaseConfig = {
+        apiKey: &#34;xyz&#34;,
+        authDomain: &#34;YOUR-APP.firebaseapp.com&#34;,
+        projectId: &#34;YOUR-PROJECT-ID&#34;,
+        storageBucket: &#34;YOUR-STORAGE-BUCKET&#34;,
+        messagingSenderId: &#34;355052305707&#34;,
+        appId: &#34;1:355052305707:web:6ab20703d45bc89830d96e&#34;
+      };</code></pre>
+<h2 is-upgraded>Initialize Firebase and Create Variables</h2>
+<p>In the Google Cloud Shell, open the <code>globaljags</code> directory in your embedded cloud editor.</p>
+<p>You need to edit the <code>globaljags/web/public/index.html</code> file to initialize Firebase and create the variables needed by your script.</p>
+<p><code>globaljags/web/public/index.html</code></p>
+<pre><code>      // Initialize Firebase
+      const fbapp = initializeApp(firebaseConfig);
+
+      // Access the Firestore database 
+      const db = getFirestore(fbapp);
+
+      // Create a query that selects all documents in the &#34;photos&#34; collection
+      const photoQuery = query(collection(db, &#34;photos&#34;));
+
+      // Create an array that will hold all the markers on the map
+      let markersArray = [];</code></pre>
+<h2 is-upgraded>Implement the Listener Function that Will Update the Map When the Database is Updated</h2>
+<p>In the Google Cloud Shell, open the <code>globaljags</code> directory in your embedded cloud editor.</p>
+<p>You need to edit the <code>globaljags/web/public/index.html</code> file to fully implement the listener function that watches the Firestore database snapshot. When the database is updated, this function will update the Google Map to display all of the existing thumbnails.</p>
+<p><code>globaljags/web/public/index.html</code></p>
+<pre><code>// Create a listener function that watches a snapshot based on a query
+      const listener = onSnapshot(photoQuery, (querySnapshot) =&gt; {
+        console.log(&#39;Database snapshot updated!&#39;);
+
+        // Set the boundaries of the map
+        const bounds = new google.maps.LatLngBounds();
+
+        // Clear existing markers from the map
+        markersArray.forEach((marker) =&gt; {
+          console.log(&#39;Deleting marker!&#39;);
+          marker.setMap(null);
+        });
+
+        // Check to see if there are any photos in the snapshot;
+        // If not, center the map on IUPUI
+        if (querySnapshot.empty) {
+          const iupui = new google.maps.LatLng(39.7749968, -86.1794685);
+          bounds.extend(iupui);
+        };
+
+        // Loop through the documents found in the snapshot
+        querySnapshot.forEach((doc) =&gt; {
+          const photoLat = doc.data().latitude;
+          const photoLon = doc.data().longitude;
+
+          // Create a new LatLng object with the photo&#39;s lat/lon
+          const photoLatLng = { lat: photoLat, lng: photoLon};
+
+          // Extend the map bounds to encompass this point
+          const newLocation = new google.maps.LatLng(photoLat, photoLon);
+          bounds.extend(newLocation);
+
+          console.log(doc.data().thumb64_url);
+
+          // Place the marker on the map using the thumbnail as the icon
+          const marker = new google.maps.Marker({
+            position: photoLatLng,
+            map,
+            icon: doc.data().thumb64_url
+          });
+
+          // Add the new marker to the array of markers
+          markersArray.push(marker);
+        });
+          
+        // When all of the markers have been added to the map, move and recenter
+        map.fitBounds(bounds);
+        map.panToBounds(bounds);
+        if (map.zoom &gt; 15) {
+          map.setZoom(15);
+        }
+
+      });</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 7: Test Your Application" duration="0">
+        <p>If you have completed Steps 1-6 above, your GlobalJags application is complete! You can now run the website locally on Cloud Shell, upload a photo, and watch your Google Map react as the photos are processed by your Cloud Functions.</p>
+<p>In the Google Cloud Shell, navigate to the <code>web</code> directory. You can preview the starter website by entering <code>npm install && npm start</code> at the shell&#39;s command line. Press <code>Control+C</code> to stop the website script.</p>
+<h2 is-upgraded>Resetting Your Application</h2>
+<p>You can reset your web application at any time by following these steps:</p>
+<p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
+<p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
+<ol type="1" start="1">
+<li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
+<li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Databases&#34;</strong> and choose <strong>&#34;Firestore&#34;</strong></li>
+<li>Click the &#34;three dots&#34; menu next to the <strong>&#34;photos&#34;</strong> collection and choose <strong>&#34;Delete collection&#34;</strong></li>
+</ol>
+<ol type="1" start="1">
+<li>This will delete all records in your photos collection. The collection will be recreated when a new photo is uploaded.</li>
+</ol>
+<ol type="1" start="4">
+<li>Open the navigation menu at the top left (the &#34;hamburger&#34; menu)</li>
+<li>Under <strong>&#34;More Products&#34;</strong>, scroll to <strong>&#34;Storage&#34;</strong> and choose <strong>&#34;Cloud Storage&#34;</strong></li>
+<li>Select your &#34;thumbnails&#34; bucket</li>
+<li>Select all images and delete them</li>
+<li>Return to your list of Cloud Storage buckets</li>
+<li>Select your &#34;images&#34; bucket</li>
+<li>Select all images and delete them</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 8: Deploy Your Website" duration="0">
+        <p>Once your application has been tested and works to your satisfaction, you can deploy the web application to App Engine. This will make your web application available to all users.</p>
+<p>In the Google Cloud Shell, navigate to the <code>web</code> directory.</p>
+<p>On the command line, create the App Engine configuration file.</p>
+<pre>$ touch app.yaml</pre>
+<p>Open the directory in the file editor and then open <code>app.yaml</code>.</p>
+<h2 is-upgraded>Add App Engine Configuration</h2>
+<p>Add the necessary configuration for App Engine</p>
+<p><code>globaljags/web/app.yamlx</code></p>
+<pre><code>// Import packages
+const {Storage} = require(&#39;@google-cloud/storage&#39;);
+const path = require(&#39;path&#39;);
+const fs = require(&#39;fs-extra&#39;);
+const os = require(&#39;os&#39;);
+const sharp = require(&#39;sharp&#39;);</code></pre>
 
 
       </google-codelab-step>
