@@ -30,7 +30,7 @@
       <google-codelab-step label="Introduction" duration="0">
         <table>
 <tr><td colspan="1" rowspan="1"><p>You have been provided with starter code for the GlobalJags cloud-based application. Follow the instructions below to complete and deploy your own version of the project.</p>
-</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 186.50px" src="img/6f8630d0dac1826a.png"></p>
+</td><td colspan="1" rowspan="1"><p class="image-container"><img style="width: 252.00px" src="img/a3f391d3b41e2537.png"></p>
 </td></tr>
 </table>
 <p><strong>Before you begin</strong> you MUST have an active Google Cloud Platform billing account. Your instructor previously shared the setup instructions for this account.</p>
@@ -47,7 +47,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 1: Review the Starter Code" duration="0">
+      <google-codelab-step label="Step 1: Obtain the Starter Code" duration="0">
         <p>Visit the Google Cloud Platform Console by going to <a href="https://console.cloud.google.com" target="_blank">https://console.cloud.google.com</a>.</p>
 <p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
 <p>From the title bar at the top of the page, view the active project name.  If this is not the correct project, selecting the project name will open the project selection modal window.</p>
@@ -175,6 +175,13 @@ const path = require(&#39;path&#39;);
 const fs = require(&#39;fs-extra&#39;);
 const os = require(&#39;os&#39;);
 const sharp = require(&#39;sharp&#39;);</code></pre>
+<h2 is-upgraded>Write the Entry Point Function</h2>
+<p>Complete the logic of the entry point function. This is the function that will be run first when the Cloud Function is triggered.</p>
+<p>Substitute your values in the code below where indicated. You created your storage buckets in Step 2: Create GCS Buckets.</p>
+<ul>
+<li><strong>YOUR-THUMBNAILS-BUCKET </strong><em>This is the globally unique identifier for the bucket where the thumbnail photos will be uploaded</em></li>
+<li><strong>YOUR-IMAGES-BUCKET </strong><em>This is the globally unique identifier for the bucket where the full-resolution photos will be uploaded</em></li>
+</ul>
 <h2 is-upgraded>Deploy the Cloud Function</h2>
 <p>Deploying the Cloud Function allows you to execute and test its logic. To deploy, you MUST know the values for the following variables. Substitute your values in the commands below.</p>
 <ul>
@@ -348,6 +355,7 @@ const parseDMS = require(&#39;parse-dms&#39;);</code></pre>
         return request_json[&#39;message&#39;]
     else:
         return f&#39;Hello World!&#39;</code></pre>
+<h2 is-upgraded>Configure your Google Maps API Key</h2>
 <p>In the Google Cloud Shell, open the <code>globaljags</code> directory in your embedded cloud editor.</p>
 <p>You need to edit the <code>globaljags/web/public/index.html</code> file to add your API key.</p>
 <ol type="1" start="1">
