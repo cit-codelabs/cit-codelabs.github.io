@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
   <title>GlobalJags Walkthrough</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -41,8 +42,22 @@
       </google-codelab-step>
     
       <google-codelab-step label="Overview" duration="0">
-        <p>Google Cloud Functions are discrete</p>
-<p>Cloud Functions are activated (or &#34;triggered&#34;) by a number of different events: HTTP requests, Pub/Sub notifications, or changes to Cloud Storage. The Cloud Functions in this tutorial will be activated by HTTP requests, which means they will respond when their URL is visited by a user via a web browser.</p>
+        <p>This project will integrate several cloud services together into a cohesive application. This application will use the Google Cloud Platform, but could easily be accomplished with similar services on other major cloud service providers.</p>
+<h2 is-upgraded>System Request</h2>
+<ol type="1" start="1">
+<li>Create a website that displays a map &amp; allows users to upload photos from Study Abroad trips at IUPUI<br></li>
+<li>Automatically create thumbnail images of the photo<br></li>
+<li>If available, extract the location data from where the photo was taken<br></li>
+<li>Show a thumbnail photo of each image on a Google Map at the location where it was taken</li>
+</ol>
+<h2 is-upgraded>Google Cloud Services Implemented</h2>
+<ol type="1" start="1">
+<li>Website will be created in Node.js and hosted on <strong>App Engine</strong></li>
+<li>Two <strong>Cloud Functions</strong> will be created to manipulate and retrieve data from uploaded images<br></li>
+<li>Data will be stored in the <strong>Firestore</strong> database, a NoSQL database that provides real-time updates<br></li>
+<li>Photos uploaded to the service will be stored in <strong>Cloud Storage<br></strong></li>
+<li>A <strong>Google Map</strong> will display the thumbnail images after they are processed</li>
+</ol>
 
 
       </google-codelab-step>
@@ -50,9 +65,48 @@
       <google-codelab-step label="Step 1: Obtain the Starter Code" duration="0">
         <p>Visit the Google Cloud Platform Console by going to <a href="https://console.cloud.google.com" target="_blank">https://console.cloud.google.com</a>.</p>
 <p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
-<p>From the title bar at the top of the page, view the active project name.  If this is not the correct project, selecting the project name will open the project selection modal window.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/ed9ef8846f221215.png"></p>
-<p>Choose (or create) a project into which you will create a Cloud Function.  You should be returned to the Console home page with the selected project displayed in the title bar.</p>
+<p>Create a NEW Google Cloud Project with a unique name.</p>
+<ul>
+<li>Remember to start your Cloud Project name with a <strong>letter</strong> and <strong>not a number</strong></li>
+</ul>
+<h2 is-upgraded>Clone the Starter Code</h2>
+<ol type="1" start="1">
+<li>In a new tab, visit <a href="https://bit.ly/globaljags" target="_blank">https://bit.ly/globaljags</a></li>
+<li>Log in with your IU username/passphrase (no Duo needed)</li>
+<li>Create a new fork of the code</li>
+</ol>
+<ol type="1" start="1">
+<li>UNCHECK the box that says &#34;Copy the &#39;starter&#39; branch only&#34;</li>
+<li>Choose your IU username if asked for an owner</li>
+<li>Click &#34;Create Fork&#34;</li>
+<li>Copy the URL to your repository to use in the next step</li>
+</ol>
+<h2 is-upgraded>Download Your Copy of the Starter Code</h2>
+<ol type="1" start="1">
+<li>In another new tab, open Cloud Shell <a href="https://shell.cloud.google.com" target="_blank">https://shell.cloud.google.com</a></li>
+<li>Log in with your Google@IU account</li>
+<li>At the command line, clone your repository</li>
+</ol>
+<ol type="1" start="1">
+<li>Enter your IU username and passphrase when asked</li>
+</ol>
+<pre>$ git clone YOUR-REPOSITORY-URL</pre>
+<h2 is-upgraded>Preview the Website</h2>
+<ol type="1" start="1">
+<li>From the Cloud Shell command line, run the following:</li>
+</ol>
+<pre>$ cd globaljags-demo/web
+
+$ npm install &amp;&amp; npm start</pre>
+<ol type="1" start="2">
+<li>Use the Cloud Shell web preview to view the site</li>
+</ol>
+<ol type="1" start="1">
+<li>Port must be set to 8080</li>
+</ol>
+<h2 is-upgraded>Obtain the Sample Images</h2>
+<p>Sample images with embedded EXIF location data have been provided for you to use in testing your application.<br></p>
+<p><a href="https://bit.ly/globaljags-images" target="_blank"><paper-button class="colored" raised>View the Sample Images</paper-button></a></p>
 
 
       </google-codelab-step>
@@ -81,11 +135,11 @@
 <li>Click <strong>&#34;Create&#34;</strong></li>
 </ol>
 <aside class="warning"><p><strong>Important!</strong>  Your bucket names must be completely unique across all GCP users.  One suggestion is to incorporate your username into the bucketname to assist in finding a globally unique name. Examples:</p>
-<ol type="1" start="7">
+<ul>
 <li><em>username</em>-globaljags-uploads</li>
 <li><em>username</em>-globaljags-thumbnails</li>
 <li><em>username</em>-globaljags-images</li>
-</ol>
+</ul>
 </aside>
 <h2 is-upgraded>Configure Access to Your GCS Buckets</h2>
 <p>Visit the Google Cloud Console and ensure your GlobalJags project is active.</p>
@@ -713,29 +767,26 @@ const {Storage} = require(&#39;@google-cloud/storage&#39;);</code></pre>
 <p>Open the directory in the file editor and then open <code>app.yaml</code>.</p>
 <h2 is-upgraded>Add App Engine Configuration</h2>
 <p>Add the necessary configuration for App Engine</p>
-<p><code>globaljags/web/app.yamlx</code></p>
-<pre><code>// Import packages
-const {Storage} = require(&#39;@google-cloud/storage&#39;);
-const path = require(&#39;path&#39;);
-const fs = require(&#39;fs-extra&#39;);
-const os = require(&#39;os&#39;);
-const sharp = require(&#39;sharp&#39;);</code></pre>
+<p><code>globaljags/web/app.yaml</code></p>
+<pre><code>runtime: nodejs18</code></pre>
+<h2 is-upgraded>Deploy the Website</h2>
+<h3 is-upgraded>Ensure your Cloud Project is Active</h3>
+<p>Use the command line interface to set the active project.</p>
+<pre>$ gcloud config set project GCP-PROJECT-NAME</pre>
+<p>If asked, click the button to Authorize access to your project from Cloud Shell.</p>
+<h3 is-upgraded>Issue the Deploy Command</h3>
+<p>Use the command line interface to deploy the website.</p>
+<pre>$ gcloud app deploy</pre>
+<p>If asked to enable the any cloud APIs, do so.</p>
+<p>Once deployed, you can find the URL for your App Engine site in the App Engine dashboard in Google Cloud Console.</p>
+<p><a href="https://console.cloud.google.com" target="_blank"><paper-button class="colored" raised>Open the Google Cloud Console</paper-button></a></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="What&#39;s Next?" duration="0">
-        <p>Congratulations!  You&#39;ve created two Google Cloud Functions.</p>
-<p>The Pirate Name Generator could use some work.  Consider making any (or all) of the following improvements:</p>
-<ul>
-<li>Add error handling to ensure that all of the values in the querystring begin with alphabetic characters (including a numeric querystring value will cause an error.)</li>
-<li>Adjust the code to allow just a first and last name.  If no middle name is provided, use the first letter of the first name, the last letter of the first name, and the first letter of the last name.</li>
-<li>Update the responses from the cloud function to sound more pirate-y!</li>
-</ul>
-<p>Whatever you do to improve this cloud function, you now have the ability to write programs that can accomplish countless tasks.  You can perform calculations, rename files, send notifications or emails, query data sources - the list is virtually endless.</p>
-<h2 is-upgraded>Integration with Other Cloud Functionality</h2>
-<p>Cloud Functions are most powerful when combined with other cloud technologies.  If you&#39;re new to cloud development a good place to continue your journey is to explore the possibilities of <a href="https://cloud.google.com/storage" target="_blank">Google Cloud Storage</a>.  Cloud Functions can be invoked by changes to Cloud Storage buckets, so you can write a program that alerts you when a new file is uploaded, for example.</p>
-<p>For a bit more advanced functionality, consider reading more about <a href="https://cloud.google.com/pubsub" target="_blank">Google Cloud Pub/Sub</a>, which is a service that allows other services to communicate on-demand.  A simple example of this might be to send messages to a chat application.  More powerful processes include data processing and validation, push notifications, and traffic analysis.</p>
+        <p>Congratulations!  You&#39;ve created a fully functional cloud application that makes use of several cloud services.</p>
+<p>You can now begin to view system requests through the lens of decomposed services – considering which functionality can be provided by different cloud services, and how to combine and trigger those cloud services collaboratively.</p>
 
 
       </google-codelab-step>
